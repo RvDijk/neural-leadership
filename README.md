@@ -13,6 +13,10 @@ Goals
 - Surface tradeoffs and constraints relevant to real teams
 - Offer lightweight, readable artifacts that can be shared on LinkedIn or Slack
 
+Graph thinking
+--------------
+I frame leadership as graph thinking: nodes (decisions, people, systems) and edges (influence, dependency, delay). The goal is to make tradeoffs visible and improve how signals flow through organizations.
+
 View locally
 ------------
 Open `story/index.html` in your browser, or serve the folder with a simple static server:

@@ -1197,8 +1197,6 @@ function enhanceMetadata() {
     };
     set('meta[property="og:title"]', title);
     set('meta[property="og:description"]', desc);
-    set('meta[name="twitter:title"]', title);
-    set('meta[name="twitter:description"]', desc);
     // og:image left as default banner.svg unless page provides data-og-image
     const provided = document.querySelector('meta[name="og-image"]');
     if (!provided) set('meta[property="og:image"]', '/story/banner.svg');

@@ -11,10 +11,6 @@
   <meta property="og:title" content="You Are a Weight — Decision intelligence field notes" />
   <meta property="og:description" content="Field notes on decision intelligence, applied AI, and engineering leadership. Practical observations about systems, coordination, and tradeoffs in real-world teams." />
   <meta property="og:image" content="/story/banner.svg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="You Are a Weight — Decision intelligence field notes" />
-  <meta name="twitter:description" content="Field notes on decision intelligence, applied AI, and engineering leadership. Practical observations about systems, coordination, and tradeoffs in real-world teams." />
-  <meta name="twitter:image" content="/story/banner.svg" />
   <!-- Link to author's LinkedIn profile (used in header/footer) -->
   <meta name="linkedin:profile" content="https://www.linkedin.com/in/r-van-dijk-ai/" />
   <!-- Analytics disabled: site uses local eventLayer only -->
@@ -55,12 +51,10 @@
     <h1><span class="you">You</span> are a <em>weight</em><br/>in someone else's network.</h1>
     <p class="sub">A neural story of leadership, in eighteen acts.</p>
     <p class="meta">Hover any <cite class="cite-inline" data-cite="hebb1949">[citation]</cite> for the source. Scroll to begin.</p>
-    <p class="author">Author: Ruben van Dijk</p>
-    <p class="author">Author: Ruben van Dijk — <a href="https://www.linkedin.com/in/r-van-dijk-ai/" rel="me noopener noreferrer" target="_blank">LinkedIn</a></p>
+    <p class="author">Author: Ruben van Dijk — thinking in graph structures — <a href="https://www.linkedin.com/in/r-van-dijk-ai/" rel="me noopener noreferrer" target="_blank">LinkedIn</a></p>
     <p class="read-time" id="read-time" aria-hidden="true">—</p>
     <div class="site-positioning" id="site-positioning">
-      <p><strong>Field notes on applied AI, data science, and engineering leadership.</strong> These are practical observations from building systems and working inside technical organizations, focused on how real-world systems and decisions behave — not academic theory or buzz.</p>
-      <p>Short, grounded, and slightly informal: examples, tradeoffs, and mental models that helped us make decisions under uncertainty.</p>
+      <p><strong>Field notes from applied AI and engineering leadership.</strong> I frame teams as systems of connected nodes — decisions, people, constraints, and software — with signals, delays, reinforcement, and friction flowing across edges. These pages collect practical examples, visualizations, and tradeoffs for making decisions that actually propagate well in real systems.</p>
     </div>
 
     <div class="start-here" id="start-here">
@@ -68,10 +62,10 @@
       <ol>
         <li><a href="#act-2">Systems & AI: "The substrate" (II) — what weights are and why they matter</a></li>
         <li><a href="#act-3">Teams & Execution: "STDP — order matters" (III) — practical guidance on sequencing</a></li>
-        <li><a href="#act-9">Decision Making & Tradeoffs: "Refractory — when to repair" (IX) — timing apologies and repairs</a></li>
         <li><a href="#act-16">Systems & AI: "The attention field" (XVI) — attention as an operational lever</a></li>
+        <li><a href="#act-11">Systems & AI: "Attractor basins" (XI) — culture as landscape</a></li>
       </ol>
-      <p class="start-here__note">If you're new here, try those four in order — they'll give you a cross-section of systems, team practice, and decision tradeoffs.</p>
+      <p class="start-here__note">If you're new here, try those four in order — they'll give you a cross-section of the graph/neural lens in practice.</p>
     </div>
 
     <div class="content-index" id="content-index">
@@ -109,7 +103,38 @@
       </div>
     </div>
 
-    <div class="exec-summary" id="exec-summary">Leaders are not just people in charge; they are the invisible weights that bias how people pay attention, who they trust, and what they try. Small actions — where you look, when you speak, and how you repair — change connection strengths across weeks. This story shows the mechanisms and practical ways to shift them.</div>
+    <div class="language-spec" id="language-spec">
+      <h3>How to reason about nodes and edges</h3>
+      <p>Minimal language for describing an organization as a graph. Use a small, shared vocabulary so annotations stay practical.</p>
+      <h4>Node types (what exists)</h4>
+      <ul>
+        <li><strong>Person</strong> — someone in the organization</li>
+        <li><strong>Decision</strong> — a choice that must be made</li>
+        <li><strong>System</strong> — tooling, process, or platform (CI, Jira, data pipeline)</li>
+        <li><strong>Constraint</strong> — a limitation (time, regulation, capacity)</li>
+        <li><strong>Goal</strong> — a desired outcome</li>
+      </ul>
+      <h4>Edge types (how things relate)</h4>
+      <ul>
+        <li><strong>depends_on</strong> — A needs B</li>
+        <li><strong>influences</strong> — A affects B (soft, indirect)</li>
+        <li><strong>blocks</strong> — A prevents B</li>
+        <li><strong>accelerates</strong> — A makes B faster or easier</li>
+        <li><strong>communicates_to</strong> — information flow between people/systems</li>
+      </ul>
+      <h4>Signals (system state)</h4>
+      <p>Attach qualitative signals to nodes or edges to describe state:</p>
+      <ul>
+        <li><strong>alignment</strong> (0–1)</li>
+        <li><strong>load</strong> (low / medium / high)</li>
+        <li><strong>uncertainty</strong> (0–1)</li>
+        <li><strong>latency</strong> (fast / slow)</li>
+        <li><strong>conflict_risk</strong> (0–1)</li>
+      </ul>
+      <p class="aside">These are qualitative annotations, not precise statistical measures—use them to make sense of tradeoffs and signal flows.</p>
+    </div>
+
+    <div class="exec-summary" id="exec-summary">Practical notes on decision intelligence: how structure, timing, and signaling shape what an organization can and cannot do.</div>
 
     <div class="why-this-exists" id="why-this-exists">
       <h3>Why this exists</h3>
