@@ -540,6 +540,50 @@
   </div>
 </section>
 
+<!-- ═════════════════════════════════════════ FINAL ACT — GRAPH NOTEBOOK ═════════════════════════════════════════ -->
+<section class="scene scene--final" id="act-final">
+  <div class="scene__copy">
+    <span class="chapter">Final · Graph notebook</span>
+    <h2>Diagnose an org situation as a graph</h2>
+    <p class="aside">Convert one team situation into nodes, edges, and signals. Below is an example you can use as a template.</p>
+
+    <h3>Step 1 — Identify nodes</h3>
+    <ul>
+      <li><strong>People:</strong> PM, TL, DE</li>
+      <li><strong>Systems:</strong> Backlog (Jira), Data pipeline, Release process</li>
+      <li><strong>Goals / Constraints:</strong> Ship faster; Limited engineering capacity</li>
+      <li><strong>Decision:</strong> Prioritization of next sprint</li>
+    </ul>
+
+    <h3>Step 2 — Define relationships</h3>
+    <ul>
+      <li>PM → TL (<em>communicates_to</em>)</li>
+      <li>TL → DE (<em>depends_on</em>) — needs data for features</li>
+      <li>Backlog → TL (<em>influences</em>)</li>
+      <li>Data pipeline → DE (<em>blocks</em>) — fragile</li>
+      <li>Capacity constraint → TL (<em>blocks</em>) decision speed</li>
+    </ul>
+
+    <h3>Step 3 — Signals (annotate)</h3>
+    <ul>
+      <li>PM–TL alignment: <strong>0.6</strong> (medium)</li>
+      <li>TL–DE alignment: <strong>0.4</strong> (low)</li>
+      <li>Data pipeline load: <strong>high</strong></li>
+      <li>Conflict risk (PM vs TL): <strong>0.7</strong></li>
+      <li>Decision latency: <strong>slow</strong></li>
+    </ul>
+
+    <h3>Signal interpretation</h3>
+    <p class="final-insight" id="final-insight">Inspect the graph: where load accumulates, where alignment breaks, where latency appears.</p>
+  </div>
+  <div class="scene__stage" id="final-stage" role="img" aria-labelledby="final-t final-d">
+    <svg viewBox="0 0 560 420" class="final-graph-svg" id="final-graph" aria-hidden="false">
+      <title id="final-t">Leadership graph — example diagnosis</title>
+      <desc id="final-d">Nodes: PM, TL, DE, Backlog, Data pipeline, Capacity constraint, Decision, Goal. Edges annotated with alignment and load signals.</desc>
+    </svg>
+  </div>
+</section>
+
 <!-- ────────────────────────── Closing ────────────────────────── -->
 <footer class="closing">
   <p class="closing__line">The network is already running.</p>

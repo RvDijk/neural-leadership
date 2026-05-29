@@ -1314,3 +1314,20 @@ strong { color: var(--ink-0); font-weight: 600; }
   .scene__copy, .scene__stage { opacity: 1; transform: none; filter: none; }
   .curve { stroke-dashoffset: 0; }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+  FINAL ACT — Graph notebook visualization
+  ════════════════════════════════════════════════════════════════════ */
+.scene--final .scene__copy { max-width: 36ch; }
+.final-graph-svg { width: 100%; height: 100%; overflow: visible; }
+.final-node { fill: var(--bg-2); stroke: var(--hi); stroke-width: 1.5; }
+.final-node.person { fill: linear-gradient(90deg, var(--hi), var(--good)); }
+.final-node.system { fill: var(--bg-2); stroke: var(--cool); }
+.final-edge { stroke: var(--ink-3); stroke-width: 2; marker-end: url(#arrow); }
+.final-edge.high-load { stroke: var(--warn); stroke-dasharray: 6 4; }
+.final-edge.low-align { stroke: var(--warn); stroke-width: 2.5; opacity: 0.95; }
+.final-label { fill: var(--ink-1); font-family: ui-monospace, monospace; font-size: 11px; }
+.final-signal { font-family: ui-monospace, monospace; font-size: 11px; fill: var(--ink-2); }
+.final-insight { margin-top: .6rem; background: rgba(154,167,255,0.03); padding: .6rem; border-left: 3px solid var(--hi); color: var(--ink-1); }
+
+@media (max-width: 800px) { .scene--final { grid-template-columns: 1fr; } .scene--final .scene__copy { order: 2; } .scene--final .scene__stage { order: 1; } }

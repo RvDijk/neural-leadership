@@ -1155,6 +1155,75 @@ function buildEmpower() {
   obs.observe(host);
 }
 
+/* ════════════════════════════════════════════════════════════════
+   FINAL ACT — buildFinalAct: renders an annotated leadership graph
+   ════════════════════════════════════════════════════════════════ */
+function buildFinalAct() {
+  const host = document.getElementById('final-stage');
+  if (!host) return;
+  const svg = document.getElementById('final-graph');
+  if (!svg) return;
+
+  // defs: arrow marker
+  const defs = el('defs', {}, svg);
+  el('marker', { id: 'arrow', markerWidth: 8, markerHeight: 8, refX: 7, refY: 4, orient: 'auto' }, defs)
+    .appendChild(el('path', { d: 'M0,0 L8,4 L0,8 z', fill: '#9aa7ff' }));
+
+  // Node positions
+  const positions = {
+    PM: { x: 100, y: 80, type: 'person' },
+    TL: { x: 100, y: 200, type: 'person' },
+    DE: { x: 100, y: 320, type: 'person' },
+    Backlog: { x: 320, y: 80, type: 'system' },
+    DataPipeline: { x: 320, y: 200, type: 'system' },
+    Capacity: { x: 320, y: 320, type: 'constraint' },
+    Decision: { x: 480, y: 180, type: 'decision' },
+    Goal: { x: 480, y: 300, type: 'goal' },
+  };
+
+  const nodes = {};
+  Object.entries(positions).forEach(([k, v]) => {
+    const g = el('g', { class: 'final-node-group', 'data-id': k }, svg);
+    const r = (v.type === 'person') ? 18 : (v.type === 'system' ? 16 : 14);
+    const cls = 'final-node' + (v.type === 'person' ? ' person' : v.type === 'system' ? ' system' : '');
+    el('circle', { class: cls, cx: v.x, cy: v.y, r }, g);
+    el('text', { class: 'final-label', x: v.x, y: v.y + r + 14, 'text-anchor': 'middle' }, g).textContent = k.replace(/([A-Z])/g, ' $1').trim();
+    nodes[k] = v;
+  });
+
+  // Edges with annotations (alignment, load)
+  const edges = [
+    { a: 'PM', b: 'TL', type: 'communicates_to', align: 0.6 },
+    { a: 'TL', b: 'DE', type: 'depends_on', align: 0.4 },
+    { a: 'Backlog', b: 'TL', type: 'influences', align: 0.5 },
+    { a: 'DataPipeline', b: 'DE', type: 'blocks', load: 'high' },
+    { a: 'Capacity', b: 'TL', type: 'blocks', note: 'limits capacity' },
+    { a: 'TL', b: 'Decision', type: 'influences' },
+    { a: 'Decision', b: 'Goal', type: 'achieves' },
+  ];
+
+  edges.forEach((e, i) => {
+    const a = nodes[e.a], b = nodes[e.b];
+    const line = el('line', {
+      class: 'final-edge', x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+      'stroke-linecap': 'round', 'data-idx': i,
+    }, svg);
+    if (e.load === 'high') line.classList.add('high-load');
+    if (e.align !== undefined && e.align < 0.5) line.classList.add('low-align');
+    // add small inline label at 60% along the edge
+    const lx = a.x * 0.6 + b.x * 0.4, ly = a.y * 0.6 + b.y * 0.4;
+    el('text', { class: 'final-signal', x: lx, y: ly - 6, 'text-anchor': 'middle' }, svg).textContent = e.align !== undefined ? `align ${e.align}` : (e.load ? `load:${e.load}` : e.type);
+  });
+
+  // Small interactive hint: clicking stage shows a suggested insight
+  const insightEl = document.getElementById('final-insight');
+  host.addEventListener('click', () => {
+    if (!insightEl) return;
+    insightEl.textContent = 'Insight: The visible bottleneck is the Data Pipeline — high load and low TL–DE alignment create hidden dependency latency. Prioritize pipeline stability or reduce coupling.';
+    sfx.click();
+  });
+}
+
 /* ════════════════════════════════════════════════════════════════ */
 /* Boot                                                              */
 /* ════════════════════════════════════════════════════════════════ */
@@ -1174,6 +1243,7 @@ wireAttractor();
 buildEmpower();
 buildFutures();
 buildMirror();
+buildFinalAct();
 // --- Metadata, read-time, progress bar, and lightweight analytics/data-layer ---
 function enhanceMetadata() {
   try {
