@@ -34,7 +34,8 @@ const CITES = {
   jackson2019: 'Jackson (2019). The Human Network. — network position drives influence.',
   strogatz2018:'Strogatz (2018). Nonlinear Dynamics and Chaos. — attractor basins & phase transitions.',
   march1991:   'March (1991). Exploration and exploitation in organizational learning.',
-  eurich2017:  'Eurich (2017). Insight. — 95% believe they\u2019re self-aware; 10–15% are.',
+  eurich2017:  'Eurich (2017). Insight. — 95% believe they\u2019re self-aware; 10\u201315% are.',
+  eigenvalue:  'Eigenvector centrality: your influence score is proportional to the influence scores of your neighbors. A star-topology leader pools this score at one node \u2014 remove that node and the score collapses. A leader who co-develops others distributes centrality across the mesh. The network\u2019s resilience is proportional to how well the eigenvalue is spread.',
 };
 
 function wireCitations() {

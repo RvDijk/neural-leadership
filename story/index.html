@@ -29,6 +29,9 @@
     <li><a href="#act-13"><span class="num">XIII</span>Growing new nodes</a></li>
     <li><a href="#act-14"><span class="num">XIV</span>Sarah's three futures</a></li>
     <li><a href="#act-15"><span class="num">XV</span>The mirror</a></li>
+    <li><a href="#act-16"><span class="num">XVI</span>The attention field</a></li>
+    <li><a href="#act-17"><span class="num">XVII</span>Planned absence</a></li>
+    <li><a href="#act-18"><span class="num">XVIII</span>The return path</a></li>
   </ol>
 </nav>
 
@@ -267,7 +270,7 @@
     <p>There is a second failure mode beyond the elevator person: the leader who is <em>present</em> in the deep — but alone there. They carry the cognitive mass. They are the only node with high betweenness <em>and</em> high depth. When they leave, they take both the bridges and the knowledge.</p>
     <p>Hebbian plasticity is not contagious by proximity. It is contagious by <em>co-firing</em>. When you do content work <em>with</em> someone — not briefing them on your conclusions, but thinking inside the problem with them as a peer — their weights strengthen alongside yours.<cite class="cite-inline" data-cite="hebb1949">[Hebb, 1949]</cite> You are not the bottleneck anymore; you are the catalyst.</p>
     <blockquote class="pullquote">The signal you should propagate most is not <em>what</em> you concluded. It is <em>how</em> you think.</blockquote>
-    <p>A star topology (every edge runs through you) and a distributed mesh (nodes building their own outgoing edges) are not equally resilient. The mesh survives your absence. The star collapses.<cite class="cite-inline" data-cite="cross2004">[Cross &amp; Parker, 2004]</cite> Empowerment is not a management virtue — it is a structural property. You are either distributing <em>eigenvalue</em> or hoarding it.</p>
+    <p>A star topology (every edge runs through you) and a distributed mesh (nodes building their own outgoing edges) are not equally resilient. The mesh survives your absence. The star collapses.<cite class="cite-inline" data-cite="cross2004">[Cross &amp; Parker, 2004]</cite> Empowerment is not a management virtue — it is a structural property. You are either distributing <cite class="cite-inline" data-cite="eigenvalue">eigenvalue</cite> or hoarding it.</p>
     <p class="aside">The two-panel below shows the same team at two different points in time. Left: the leader is the only deep node. Right: the leader has co-fired with three others — they now generate signal independently. Observe what changes when the leader node is removed.</p>
   </div>
   <div class="scene__stage" id="empower-stage"></div>
@@ -311,6 +314,131 @@
     <p>What's needed isn't surveillance. It's a <strong>mirror for a system you cannot otherwise see</strong>.</p>
   </div>
   <div class="scene__stage" id="mirror-stage"></div>
+</section>
+
+<!-- ═══════════════ ACT XVI — ATTENTION FIELD ═══════════════ -->
+<section class="scene scene--attention" id="act-16">
+  <div class="scene__copy">
+    <span class="chapter">XVI · The attention field</span>
+    <h2>You cannot tell people what matters. You can only show them where you look.</h2>
+    <p>Transformers process every input simultaneously, but not equally. An attention mechanism assigns a weight to each element for each context: some tokens matter enormously for the current output, others barely at all. The model learns what to care about by learning what to attend to.</p>
+    <p>Every leader runs an attention mechanism. Where you ask follow-up questions, who you quote in presentations, which risks you make visible in a status meeting — these are the attention weights your team internalizes. You train what is worth worrying about not by declaring it, but by the pattern of where you slow down.</p>
+    <p>The engineer who learns that you only engage deeply with shipping velocity, and never with technical debt or human cost, will eventually stop modeling those things as worth surfacing.</p>
+    <p class="aside">The question is not only what you value — it is what your attention weights signal you value, every week, to the people watching.</p>
+  </div>
+  <div class="scene__stage">
+    <svg viewBox="0 0 400 400" class="attn-svg" role="img" aria-label="Attention weight allocation">
+      <circle cx="80" cy="200" r="24" class="attn-leader"/>
+      <text x="80" y="240" class="attn-lbl">you</text>
+      <line x1="104" y1="188" x2="286" y2="72"  class="attn-beam attn-hi"/>
+      <line x1="104" y1="194" x2="286" y2="140" class="attn-beam attn-hi"/>
+      <line x1="104" y1="200" x2="286" y2="200" class="attn-beam attn-med"/>
+      <line x1="104" y1="206" x2="286" y2="262" class="attn-beam attn-lo"/>
+      <line x1="104" y1="212" x2="286" y2="330" class="attn-beam attn-lo"/>
+      <circle cx="306" cy="72"  r="20" class="attn-peer attn-peer-hi"/>
+      <circle cx="306" cy="140" r="20" class="attn-peer attn-peer-hi"/>
+      <circle cx="306" cy="200" r="14" class="attn-peer attn-peer-med"/>
+      <circle cx="306" cy="262" r="10" class="attn-peer attn-peer-lo"/>
+      <circle cx="306" cy="330" r="10" class="attn-peer attn-peer-lo"/>
+      <text x="200" y="38"  class="attn-annot">learns to matter</text>
+      <text x="200" y="378" class="attn-annot attn-annot-dim">learns to not matter</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════ ACT XVII — PLANNED ABSENCE ═══════════════ -->
+<section class="scene scene--dropout" id="act-17">
+  <div class="scene__copy">
+    <span class="chapter">XVII · Planned absence</span>
+    <h2>The network that has never run without you cannot survive your absence.</h2>
+    <p>In neural network training, <em>dropout</em> is deliberate: during each pass, a random fraction of neurons is silenced. The network cannot route through any single bottleneck. It must build distributed representations across many pathways. When all neurons are restored, the result generalizes — not a model that memorized one efficient path through a convenient hub.</p>
+    <p>If your team has never run a sprint without you making the key calls, they will not run one well when you are unavailable. The absence must be practiced — in low-stakes conditions, repeatedly, before it is forced on you.</p>
+    <p>This is not delegation as relief. It is dropout as method: building the alternative pathways while the stakes are low enough to let them form imperfectly.</p>
+    <p class="aside">The goal is not a team that functions without you. The goal is a network that generates its own signal — one that no longer routes all cognition through a single hub.</p>
+  </div>
+  <div class="scene__stage">
+    <svg viewBox="0 0 400 400" class="dropout-svg" role="img" aria-label="Star topology versus distributed mesh after dropout">
+      <line x1="200" y1="35" x2="200" y2="375" class="do-divider"/>
+      <text x="100" y="22" class="do-label">star — never alone</text>
+      <text x="300" y="22" class="do-label">mesh — after dropout</text>
+      <!-- Left: star -->
+      <circle cx="100" cy="210" r="18" class="do-center"/>
+      <text x="100" y="248" class="do-label">you</text>
+      <circle cx="100" cy="135" r="11" class="do-leaf"/>
+      <circle cx="171" cy="187" r="11" class="do-leaf"/>
+      <circle cx="144" cy="271" r="11" class="do-leaf"/>
+      <circle cx="56"  cy="271" r="11" class="do-leaf"/>
+      <circle cx="29"  cy="187" r="11" class="do-leaf"/>
+      <line x1="100" y1="192" x2="100" y2="146"  class="do-edge"/>
+      <line x1="116" y1="203" x2="161" y2="192"  class="do-edge"/>
+      <line x1="112" y1="222" x2="138" y2="261"  class="do-edge"/>
+      <line x1="88"  y1="222" x2="63"  y2="261"  class="do-edge"/>
+      <line x1="84"  y1="203" x2="39"  y2="192"  class="do-edge"/>
+      <!-- Right: mesh -->
+      <circle cx="300" cy="210" r="18" class="do-center do-center-absent"/>
+      <circle cx="300" cy="135" r="11" class="do-leaf"/>
+      <circle cx="371" cy="187" r="11" class="do-leaf"/>
+      <circle cx="344" cy="271" r="11" class="do-leaf"/>
+      <circle cx="256" cy="271" r="11" class="do-leaf"/>
+      <circle cx="229" cy="187" r="11" class="do-leaf"/>
+      <line x1="300" y1="135" x2="371" y2="187" class="do-edge-new"/>
+      <line x1="371" y1="187" x2="344" y2="271" class="do-edge-new"/>
+      <line x1="344" y1="271" x2="256" y2="271" class="do-edge-new"/>
+      <line x1="256" y1="271" x2="229" y2="187" class="do-edge-new"/>
+      <line x1="229" y1="187" x2="300" y2="135" class="do-edge-new"/>
+      <line x1="300" y1="192" x2="300" y2="146"  class="do-edge do-edge-faded"/>
+      <line x1="316" y1="203" x2="361" y2="192"  class="do-edge do-edge-faded"/>
+      <line x1="312" y1="222" x2="338" y2="261"  class="do-edge do-edge-faded"/>
+      <line x1="288" y1="222" x2="263" y2="261"  class="do-edge do-edge-faded"/>
+      <line x1="284" y1="203" x2="239" y2="192"  class="do-edge do-edge-faded"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════ ACT XVIII — THE RETURN PATH ═══════════════ -->
+<section class="scene scene--backprop" id="act-18">
+  <div class="scene__copy">
+    <span class="chapter">XVIII · The return path</span>
+    <h2>A network that cannot send error backwards can only learn from success.</h2>
+    <p>Neural networks learn through backpropagation: a signal travels forward through the layers to produce an output; the error between that output and the desired result travels <em>backward</em>, updating the weights that produced the deviation. Without the return path, the weights that caused the error never see it.</p>
+    <p>Many hierarchies are optimized for the forward pass. Decisions propagate downward with reasonable fidelity. The error signal rarely travels upward at the same fidelity. Leaders absorb it — shielding teams from bad news, translating failure into lessons, reframing disappointment as learning. The intent is protective. The architecture is self-insulating.</p>
+    <p>The people closest to the output hold the error signal. When that signal cannot propagate back to where the decision was made, the decision-making weights don't update. The network makes the same mistake with the same confidence, in the same conditions.</p>
+    <p class="aside">The highest-leverage question in any post-mortem is not <em>'what went wrong?'</em> It is: <em>'which weight produced this output, and did it see the error?'</em></p>
+  </div>
+  <div class="scene__stage">
+    <svg viewBox="0 0 400 400" class="bp-svg" role="img" aria-label="Backpropagation: error signal absorbed at middle layer">
+      <defs>
+        <marker id="fwd-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L7,3 z" fill="#9aa7ff" opacity="0.6"/>
+        </marker>
+        <marker id="err-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L7,3 z" fill="#ff5d7a" opacity="0.9"/>
+        </marker>
+      </defs>
+      <text x="200" y="30"  class="bp-layer-label">decisions</text>
+      <text x="200" y="165" class="bp-layer-label">execution</text>
+      <text x="200" y="300" class="bp-layer-label">outcomes</text>
+      <circle cx="120" cy="55"  r="13" class="bp-node"/>
+      <circle cx="200" cy="55"  r="13" class="bp-node"/>
+      <circle cx="280" cy="55"  r="13" class="bp-node"/>
+      <circle cx="120" cy="185" r="13" class="bp-node"/>
+      <circle cx="200" cy="185" r="13" class="bp-node"/>
+      <circle cx="280" cy="185" r="13" class="bp-node"/>
+      <circle cx="120" cy="320" r="13" class="bp-node"/>
+      <circle cx="200" cy="320" r="13" class="bp-node bp-node-error"/>
+      <circle cx="280" cy="320" r="13" class="bp-node"/>
+      <line x1="120" y1="68"  x2="120" y2="171" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="200" y1="68"  x2="200" y2="171" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="280" y1="68"  x2="280" y2="171" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="120" y1="198" x2="120" y2="306" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="200" y1="198" x2="200" y2="306" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="280" y1="198" x2="280" y2="306" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <circle cx="200" cy="320" r="9" class="bp-error-dot"/>
+      <line x1="192" y1="306" x2="192" y2="199" class="bp-err" marker-end="url(#err-arrow)"/>
+      <line x1="192" y1="171" x2="192" y2="69"  class="bp-err bp-err-blocked" marker-end="url(#err-arrow)"/>
+      <text x="370" y="183" class="bp-note">absorbed ←</text>
+    </svg>
+  </div>
 </section>
 
 <!-- ────────────────────────── Closing ────────────────────────── -->

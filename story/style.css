@@ -1103,6 +1103,48 @@ strong { color: var(--ink-0); font-weight: 600; }
 .mirror-svg .m-node:hover { fill: var(--hi); }
 
 /* ════════════════════════════════════════════════════════════════════
+   ACT XVI — Attention field
+   ════════════════════════════════════════════════════════════════════ */
+.attn-svg { width: 100%; height: 100%; overflow: visible; }
+.attn-leader { fill: var(--hi); filter: drop-shadow(0 0 12px var(--hi)); }
+.attn-peer-hi  { fill: var(--good); filter: drop-shadow(0 0 6px var(--good)); }
+.attn-peer-med { fill: var(--ink-2); }
+.attn-peer-lo  { fill: var(--ink-3); opacity: 0.4; }
+.attn-beam { fill: none; }
+.attn-hi  { stroke: var(--good); stroke-width: 4; opacity: 0.5; }
+.attn-med { stroke: var(--ink-2); stroke-width: 2; opacity: 0.4; }
+.attn-lo  { stroke: var(--ink-3); stroke-width: 1; opacity: 0.2; }
+.attn-lbl  { fill: var(--ink-2); font-family: ui-monospace, monospace; font-size: 11px; text-anchor: middle; }
+.attn-annot { fill: var(--good); font-family: ui-serif, Georgia, serif; font-size: 12px; font-style: italic; text-anchor: middle; }
+.attn-annot-dim { fill: var(--ink-3); }
+
+/* ════════════════════════════════════════════════════════════════════
+   ACT XVII — Planned absence (dropout)
+   ════════════════════════════════════════════════════════════════════ */
+.dropout-svg { width: 100%; height: 100%; overflow: visible; }
+.do-center { fill: var(--hi); filter: drop-shadow(0 0 8px var(--hi)); }
+.do-center-absent { fill: var(--ink-3); filter: none; opacity: 0.2; }
+.do-leaf { fill: var(--ink-1); }
+.do-edge { stroke: #4a5278; stroke-width: 1.5; opacity: 0.6; }
+.do-edge-faded { stroke: #4a5278; stroke-width: 1; opacity: 0.15; stroke-dasharray: 4 4; }
+.do-edge-new { stroke: var(--good); stroke-width: 1.5; opacity: 0.75; }
+.do-divider { stroke: var(--ink-3); stroke-width: 1; opacity: 0.25; stroke-dasharray: 4 6; }
+.do-label { fill: var(--ink-2); font-family: ui-monospace, monospace; font-size: 10px; text-anchor: middle; }
+
+/* ════════════════════════════════════════════════════════════════════
+   ACT XVIII — The return path (backpropagation)
+   ════════════════════════════════════════════════════════════════════ */
+.bp-svg { width: 100%; height: 100%; overflow: visible; }
+.bp-node { fill: var(--bg-2); stroke: #4a5278; stroke-width: 1.5; }
+.bp-node-error { stroke: var(--warn); filter: drop-shadow(0 0 5px var(--warn)); }
+.bp-fwd { stroke: #9aa7ff; stroke-width: 1.5; opacity: 0.55; }
+.bp-err { stroke: var(--warn); stroke-width: 2; opacity: 0.9; }
+.bp-err-blocked { opacity: 0.2; stroke-dasharray: 5 4; }
+.bp-error-dot { fill: var(--warn); filter: drop-shadow(0 0 10px var(--warn)); }
+.bp-layer-label { fill: var(--ink-2); font-family: ui-monospace, monospace; font-size: 11px; text-anchor: middle; }
+.bp-note { fill: var(--warn); font-family: ui-monospace, monospace; font-size: 10px; text-anchor: end; opacity: 0.65; }
+
+/* ════════════════════════════════════════════════════════════════════
    Closing & sound toggle
    ════════════════════════════════════════════════════════════════════ */
 .closing {
