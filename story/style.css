@@ -782,15 +782,17 @@ strong { color: var(--ink-0); font-weight: 600; }
 .refractory-svg { width: 100%; height: 100%; overflow: visible; cursor: ew-resize; }
 .refractory-svg .ref-axis { stroke: var(--ink-3); stroke-width: 1; }
 .refractory-svg .ref-axis-text { fill: var(--ink-2); font-family: ui-monospace, monospace; font-size: 10px; }
-.refractory-svg .ref-curve {
+.refractory-svg .ref-curve-pre {
+  fill: none;
+  stroke: #9aa7ff;
+  stroke-width: 2;
+  opacity: 0.7;
+}
+.refractory-svg .ref-curve-post {
   fill: none;
   stroke: var(--warn);
-  stroke-width: 2;
+  stroke-width: 2.5;
   filter: drop-shadow(0 0 6px var(--warn));
-}
-.refractory-svg .ref-curve.received {
-  stroke: var(--good);
-  filter: drop-shadow(0 0 6px var(--good));
 }
 .refractory-svg .ref-incident {
   fill: var(--warn);
@@ -803,13 +805,24 @@ strong { color: var(--ink-0); font-weight: 600; }
 }
 .refractory-svg .ref-zone {
   fill: var(--warn);
-  opacity: .08;
+  opacity: .10;
+}
+.refractory-svg .ref-repair-zone {
+  fill: var(--good);
+  opacity: .07;
 }
 .refractory-svg .ref-zone-label {
   fill: var(--ink-2);
   font-family: ui-monospace, monospace;
   font-size: 10px;
   text-anchor: middle;
+}
+.refractory-svg .ref-repair-label {
+  fill: var(--good);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  text-anchor: middle;
+  opacity: 0.8;
 }
 .refractory-svg .ref-outcome {
   fill: var(--ink-0);

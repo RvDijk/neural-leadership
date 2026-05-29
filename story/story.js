@@ -640,13 +640,16 @@ function buildRefractory() {
   el('line', { class: 'ref-axis', x1: 40, y1: baseY, x2: W - 20, y2: baseY }, svg);
   el('text', { class: 'ref-axis-text', x: W - 20, y: baseY + 18, 'text-anchor': 'end' }, svg).textContent = 'time after incident →';
 
-  // Refractory zone shade
-  el('rect', { class: 'ref-zone', x: 60, y: 40, width: 110, height: 320 }, svg);
-  el('text', { class: 'ref-zone-label', x: 115, y: 28 }, svg).textContent = 'refractory window';
+  // Refractory zone shade (too-soon zone: receiverHot > 0.55)
+  el('rect', { class: 'ref-zone', x: 60, y: 40, width: 30, height: 320 }, svg);
+  el('text', { class: 'ref-zone-label', x: 75, y: 18 }, svg).textContent = 'refractory';
+  // Repair window (receiverHot 0.2–0.55: right moment to apologise)
+  el('rect', { class: 'ref-repair-zone', x: 90, y: 40, width: 50, height: 320 }, svg);
+  el('text', { class: 'ref-repair-label', x: 115, y: 30 }, svg).textContent = 'repair window';
 
-  // Response curve: spike up at incident, slow decay, second hump if apology lands well
-  // Build the receiver curve dynamically based on apology position
-  const curve = el('path', { class: 'ref-curve', d: '' }, svg);
+  // Two curve segments: pre-apology (neutral) and post-apology (outcome-coloured)
+  const curvePre  = el('path', { class: 'ref-curve-pre',  d: '' }, svg);
+  const curvePost = el('path', { class: 'ref-curve-post', d: '' }, svg);
   const incident = el('circle', { class: 'ref-incident', cx: 60, cy: baseY, r: 7 }, svg);
   const apologyX0 = 280;
   const apology = el('circle', { class: 'ref-apology', cx: apologyX0, cy: baseY, r: 9 }, svg);
@@ -658,45 +661,44 @@ function buildRefractory() {
   host.appendChild(svg);
 
   function buildCurve(ax) {
-    // ax is apology position in px from 60..W-30
     const t0 = 60;
-    const points = [];
+    const prePts = [], postPts = [];
     for (let x = t0; x <= W - 20; x += 4) {
       const t = x - t0;
-      // Base receiver activation: sharp spike, exponential decay
       let y = baseY - 130 * Math.exp(-t / 50);
-      // Apology effect:
       const at = ax - t0;
       const dt = t - at;
       if (dt >= 0) {
-        // Apology delivered. Effect depends on receiver state at moment of delivery.
         const receiverHot = Math.exp(-at / 50);
-        // If receiver hot (>0.55), apology amplifies upward (deepens wound)
-        // If receiver warm (0.25..0.55), apology has mild repair
-        // If receiver cool (<0.25), apology has best repair (until too late)
         let kind;
         if (receiverHot > 0.55) kind = 'amplify';
         else if (receiverHot > 0.2) kind = 'repair';
         else kind = 'fade';
         const pulseEnv = 60 * Math.exp(-dt / 40);
-        if (kind === 'amplify') y -= pulseEnv * 1.0; // pushes further from baseline (more activation)
-        else if (kind === 'repair') y += pulseEnv * 0.9; // pushes toward baseline / past it (good)
-        else y += pulseEnv * 0.25 * (1 - (at - 220) / 100); // muted late repair
+        if (kind === 'amplify') y -= pulseEnv * 1.0;
+        else if (kind === 'repair') y += pulseEnv * 0.9;
+        else y += pulseEnv * 0.25 * (1 - (at - 220) / 100);
+        postPts.push(`${x},${y.toFixed(1)}`);
+      } else {
+        prePts.push(`${x},${y.toFixed(1)}`);
       }
-      points.push(`${x},${y.toFixed(1)}`);
     }
-    curve.setAttribute('d', 'M ' + points.join(' L '));
+    // Bridge pre and post seamlessly
+    if (prePts.length && postPts.length) postPts.unshift(prePts[prePts.length - 1]);
+    curvePre.setAttribute('d', prePts.length > 1 ? 'M ' + prePts.join(' L ') : '');
+    curvePost.setAttribute('d', postPts.length > 1 ? 'M ' + postPts.join(' L ') : '');
 
-    // Decide outcome
     const at = ax - t0;
     const receiverHot = Math.exp(-at / 50);
-    let kind, msg, klass;
-    if (receiverHot > 0.55) { kind = 'amplify'; msg = 'too soon — the apology confirms threat'; klass = 'amplify'; }
-    else if (receiverHot > 0.2) { kind = 'repair'; msg = 'lands as genuine repair'; klass = 'repair'; }
-    else { kind = 'fade'; msg = 'too late — the lower weight has become baseline'; klass = 'fade'; }
+    let kind, msg;
+    if (receiverHot > 0.55) { kind = 'amplify'; msg = 'too soon — the apology confirms threat'; }
+    else if (receiverHot > 0.2) { kind = 'repair'; msg = 'lands as genuine repair'; }
+    else { kind = 'fade'; msg = 'too late — the lower weight has become baseline'; }
     outcome.textContent = msg;
-    outcome.setAttribute('fill', kind === 'repair' ? '#7fffa3' : (kind === 'amplify' ? '#ff5d7a' : '#ff9a6d'));
-    curve.classList.toggle('received', kind === 'repair');
+    const postColor = kind === 'repair' ? '#7fffa3' : (kind === 'amplify' ? '#ff5d7a' : '#ff9a6d');
+    outcome.setAttribute('fill', postColor);
+    curvePost.setAttribute('stroke', postColor);
+    curvePost.style.filter = `drop-shadow(0 0 6px ${postColor})`;
   }
   buildCurve(apologyX0);
 
@@ -866,9 +868,9 @@ function buildFutures() {
 
   const result = document.getElementById('future-result');
   const messages = {
-    immediate: { text: 'The amygdala is still hot. The apology lands as further activation. Weights bend in the wrong direction.', klass: 'bad' },
-    patient:   { text: 'You waited through the refractory window. Your repair carries weight. The network slowly rewires.', klass: 'good' },
-    silence:   { text: 'Decay does the work for you. The new lower weights become baseline. The org begins to route around you.', klass: 'meh' },
+    immediate: { text: 'Sarah calls that afternoon. Marcus hasn\'t had time to process. The apology lands as optics management, not repair. By Thursday he\'s cc\'ing their shared manager on project emails.', klass: 'bad' },
+    patient:   { text: 'Four days later, Sarah asks Marcus to walk through his concerns on the project — as a thinking partner, not a debrief. Something shifts. Three weeks on, Marcus introduces her idea in a meeting as if it were a shared conclusion. In a way, it is.', klass: 'good' },
+    silence:   { text: 'Nothing is said. The network doesn\'t wait — it re-routes. By the following sprint, Marcus has become the informal lead for the technical calls Sarah used to own. She notices when she\'s no longer on the invite list.', klass: 'meh' },
   };
 
   document.querySelectorAll('.future-btn').forEach(btn => {
