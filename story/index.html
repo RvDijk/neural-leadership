@@ -5,9 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>You Are a Weight — A Neural Story of Leadership</title>
   <meta name="description" content="A scrollable, scientifically grounded story about how leaders alter the invisible weights of the networks around them." />
+  <!-- Open Graph / Twitter basic metadata (updated dynamically by JS) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="You Are a Weight — A Neural Story of Leadership" />
+  <meta property="og:description" content="A short, science-grounded story on how leaders shape the invisible weights of their teams." />
+  <meta property="og:image" content="/story/banner.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="You Are a Weight — A Neural Story of Leadership" />
+  <meta name="twitter:description" content="A short, science-grounded story on how leaders shape the invisible weights of their teams." />
+  <meta name="twitter:image" content="/story/banner.svg" />
+  <!-- Optional: set your Plausible domain here (e.g. plausible.io/mydomain) to enable analytics -->
+  <meta name="plausible-domain" content="" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="progress-bar" aria-hidden="true"></div>
 <!-- ────────────────────────── Floating TOC ────────────────────────── -->
 <nav class="toc" aria-label="Table of contents">
   <button class="toc__toggle" aria-expanded="false" aria-controls="toc-list" title="Table of contents">
@@ -42,6 +54,8 @@
     <p class="sub">A neural story of leadership, in eighteen acts.</p>
     <p class="meta">Hover any <cite class="cite-inline" data-cite="hebb1949">[citation]</cite> for the source. Scroll to begin.</p>
     <p class="author">Author: Ruben van Dijk</p>
+    <p class="read-time" id="read-time" aria-hidden="true">—</p>
+    <div class="exec-summary" id="exec-summary">Leaders are not just people in charge; they are the invisible weights that bias how people pay attention, who they trust, and what they try. Small actions — where you look, when you speak, and how you repair — change connection strengths across weeks. This story shows the mechanisms and practical ways to shift them.</div>
     <div class="scroll-hint" aria-hidden="true"></div>
   </div>
 </header>

@@ -55,6 +55,23 @@ body {
   overflow-x: hidden;
 }
 
+/* Progress bar */
+#progress-bar {
+  position: fixed; top: 0; left: 0; height: 4px; width: 0%;
+  background: linear-gradient(90deg, var(--good), var(--hi));
+  z-index: 1000; transition: width .12s linear;
+}
+
+/* Executive summary */
+.exec-summary {
+  margin: 1rem auto 1.5rem; max-width: 60ch; background: rgba(154,167,255,0.03);
+  border-left: 3px solid rgba(154,167,255,0.08); padding: .9rem 1rem; color: var(--ink-1);
+  font-family: ui-serif, Georgia, serif; font-size: .98rem; line-height: 1.5;
+}
+
+/* Read time */
+.read-time { color: var(--ink-2); font-family: ui-monospace, monospace; font-size: .85rem; margin-top: .25rem; }
+
 /* Background — Houdini emergence + fallback gradients */
 body::before {
   content: '';

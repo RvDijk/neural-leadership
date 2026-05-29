@@ -1174,3 +1174,112 @@ wireAttractor();
 buildEmpower();
 buildFutures();
 buildMirror();
+// --- Metadata, read-time, progress bar, and lightweight analytics/data-layer ---
+function enhanceMetadata() {
+  try {
+    const title = document.querySelector('.title__inner h1')?.innerText || document.title;
+    const descEl = document.querySelector('.exec-summary');
+    const desc = descEl ? descEl.innerText : document.querySelector('meta[name="description"]').getAttribute('content');
+    document.title = title.split('\n')[0];
+    const set = (sel, val) => {
+      const m = document.querySelector(sel);
+      if (m) m.setAttribute('content', val);
+      else {
+        const el = document.createElement('meta');
+        if (sel.startsWith('meta[name')) {
+          const name = sel.match(/name=\"([^\"]+)\"/)[1]; el.setAttribute('name', name);
+        } else if (sel.startsWith('meta[property')) {
+          const prop = sel.match(/property=\"([^\"]+)\"/)[1]; el.setAttribute('property', prop);
+        }
+        el.setAttribute('content', val);
+        document.head.appendChild(el);
+      }
+    };
+    set('meta[property="og:title"]', title);
+    set('meta[property="og:description"]', desc);
+    set('meta[name="twitter:title"]', title);
+    set('meta[name="twitter:description"]', desc);
+    // og:image left as default banner.svg unless page provides data-og-image
+    const provided = document.querySelector('meta[name="og-image"]');
+    if (!provided) set('meta[property="og:image"]', '/story/banner.svg');
+  } catch (e) { console.warn(e); }
+}
+
+function computeReadTime() {
+  const txt = document.body.innerText || '';
+  const words = txt.trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  const el = document.getElementById('read-time');
+  if (el) el.textContent = `≈ ${minutes} min read`;
+  return minutes;
+}
+
+function initProgressAndScrollDepth() {
+  const bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  const thresholds = [25,50,75,100];
+  const fired = new Set();
+  const onScroll = () => {
+    const doc = document.documentElement;
+    const total = doc.scrollHeight - window.innerHeight;
+    const pct = total > 0 ? Math.min(100, Math.round(window.scrollY / total * 100)) : 100;
+    bar.style.width = pct + '%';
+    thresholds.forEach(t => {
+      if (pct >= t && !fired.has(t)) {
+        fired.add(t);
+        pushEvent({ name: 'scroll_depth', props: { depth: t } });
+      }
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// Lightweight global event layer and Plausible integration
+window.eventLayer = window.eventLayer || { events: [], push(obj) { this.events.push(obj); console.log('eventLayer push', obj); } };
+function pushEvent(ev) {
+  try {
+    // keep structure small and non-identifying
+    const payload = { name: ev.name, props: ev.props || {}, ts: Date.now() };
+    window.eventLayer.push(payload);
+    // Plausible integration if enabled
+    const pd = document.querySelector('meta[name="plausible-domain"]')?.content || '';
+    if (pd && window.plausible) {
+      window.plausible(ev.name, { props: ev.props || {} });
+    }
+  } catch (e) { console.warn(e); }
+}
+
+function captureOutboundLinks() {
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a');
+    if (!a || !a.href) return;
+    try {
+      const url = new URL(a.href, location.href);
+      if (url.hostname !== location.hostname) {
+        pushEvent({ name: 'outbound_link_click', props: { href: a.href } });
+      }
+    } catch (err) { /* ignore */ }
+  });
+}
+
+function injectPlausibleIfNeeded() {
+  const pd = document.querySelector('meta[name="plausible-domain"]')?.content || '';
+  if (!pd) return;
+  if (window.plausible) return; // already loaded
+  const s = document.createElement('script');
+  s.setAttribute('async', ''); s.setAttribute('defer', '');
+  s.setAttribute('data-domain', pd.replace(/^https?:\/\//, ''));
+  s.src = 'https://plausible.io/js/plausible.js';
+  document.head.appendChild(s);
+}
+
+// Initialize all enhancements
+try {
+  enhanceMetadata();
+  computeReadTime();
+  initProgressAndScrollDepth();
+  captureOutboundLinks();
+  injectPlausibleIfNeeded();
+  pushEvent({ name: 'page_view', props: { path: location.pathname } });
+} catch (e) { console.warn(e); }
