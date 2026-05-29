@@ -108,6 +108,8 @@ body {
  .content-index a:hover { text-decoration: underline; }
 .content-index ul { margin: 0; padding-left: 0; list-style: none; color: var(--ink-1); }
 .content-index li { margin: .45rem 0; }
+.content-index li::marker { display: none; }
+.content-index li::before { display: none !important; }
 .content-index a { color: var(--ink-0); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 800px) { .content-index__cols { flex-direction: column; } }
 
