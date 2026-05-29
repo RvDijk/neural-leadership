@@ -105,36 +105,7 @@
       </div>
     </div>
 
-    <div class="language-spec" id="language-spec">
-      <h3>How to reason about nodes and edges</h3>
-      <p>Minimal language for describing an organization as a graph. Use a small, shared vocabulary so annotations stay practical.</p>
-      <h4>Node types (what exists)</h4>
-      <ul>
-        <li><strong>Person</strong> — someone in the organization</li>
-        <li><strong>Decision</strong> — a choice that must be made</li>
-        <li><strong>System</strong> — tooling, process, or platform (CI, Jira, data pipeline)</li>
-        <li><strong>Constraint</strong> — a limitation (time, regulation, capacity)</li>
-        <li><strong>Goal</strong> — a desired outcome</li>
-      </ul>
-      <h4>Edge types (how things relate)</h4>
-      <ul>
-        <li><strong>depends_on</strong> — A needs B</li>
-        <li><strong>influences</strong> — A affects B (soft, indirect)</li>
-        <li><strong>blocks</strong> — A prevents B</li>
-        <li><strong>accelerates</strong> — A makes B faster or easier</li>
-        <li><strong>communicates_to</strong> — information flow between people/systems</li>
-      </ul>
-      <h4>Signals (system state)</h4>
-      <p>Attach qualitative signals to nodes or edges to describe state:</p>
-      <ul>
-        <li><strong>alignment</strong> (0–1)</li>
-        <li><strong>load</strong> (low / medium / high)</li>
-        <li><strong>uncertainty</strong> (0–1)</li>
-        <li><strong>latency</strong> (fast / slow)</li>
-        <li><strong>conflict_risk</strong> (0–1)</li>
-      </ul>
-      <p class="aside">These are qualitative annotations, not precise statistical measures—use them to make sense of tradeoffs and signal flows.</p>
-    </div>
+    <!-- language-spec moved to Final Act -->
 
     <div class="exec-summary" id="exec-summary">Practical notes on decision intelligence: how structure, timing, and signaling shape what an organization can and cannot do.</div>
 
@@ -546,37 +517,45 @@
 <section class="scene scene--final" id="act-final">
   <div class="scene__copy">
     <span class="chapter">Final · Graph notebook</span>
-    <h2>Diagnose an org situation as a graph</h2>
-    <p class="aside">Convert one team situation into nodes, edges, and signals. Below is an example you can use as a template.</p>
+    <h2>How things come together — a small graph notebook</h2>
+    <p class="aside">Start with a scene: you're deciding what to ship next week. Walk with me — we'll name the actors, trace the dependencies, and watch where the signal slows.</p>
 
-    <h3>Step 1 — Identify nodes</h3>
+    <h4>Scene — a quick story</h4>
+    <p>Ruth, a product manager, asks for a feature that depends on fresh data. She tells the tech lead (TL). The TL needs a change from the data engineer (DE), but the data pipeline is brittle and the team is at capacity. Ruth wants to ship faster; the TL wants to avoid tech debt. The decision stalls.</p>
+
+    <h4>Turn the scene into a graph</h4>
+    <p>We convert the story into nodes and edges: people (Ruth/PM, TL, DE); systems (backlog, data pipeline); constraints (capacity); decision (prioritise next sprint); goal (ship faster). Then we annotate: alignment between actors, pipeline load, and decision latency.</p>
+
+    <h4>Minimal language</h4>
+    <p>Here is the compact vocabulary I use to make annotations concise and comparable across cases.</p>
+    <h5>Node types</h5>
     <ul>
-      <li><strong>People:</strong> PM, TL, DE</li>
-      <li><strong>Systems:</strong> Backlog (Jira), Data pipeline, Release process</li>
-      <li><strong>Goals / Constraints:</strong> Ship faster; Limited engineering capacity</li>
-      <li><strong>Decision:</strong> Prioritization of next sprint</li>
+      <li><strong>Person</strong> — someone who acts (PM, TL, DE)</li>
+      <li><strong>Decision</strong> — the specific choice to make (prioritisation)</li>
+      <li><strong>System</strong> — tools/processes (Backlog, Data pipeline)</li>
+      <li><strong>Constraint</strong> — capacity, regulation, deadlines</li>
+      <li><strong>Goal</strong> — what success looks like (ship faster)</li>
     </ul>
 
-    <h3>Step 2 — Define relationships</h3>
+    <h5>Edge types</h5>
     <ul>
-      <li>PM → TL (<em>communicates_to</em>)</li>
-      <li>TL → DE (<em>depends_on</em>) — needs data for features</li>
-      <li>Backlog → TL (<em>influences</em>)</li>
-      <li>Data pipeline → DE (<em>blocks</em>) — fragile</li>
-      <li>Capacity constraint → TL (<em>blocks</em>) decision speed</li>
+      <li><strong>depends_on</strong> — A needs B to finish work</li>
+      <li><strong>influences</strong> — A shapes B's choices (soft)</li>
+      <li><strong>blocks</strong> — A prevents B from progressing</li>
+      <li><strong>accelerates</strong> — A reduces friction for B</li>
+      <li><strong>communicates_to</strong> — information flow</li>
     </ul>
 
-    <h3>Step 3 — Signals (annotate)</h3>
+    <h5>Signals</h5>
+    <p>Annotate each node/edge with a few qualitative signals:</p>
     <ul>
-      <li>PM–TL alignment: <strong>0.6</strong> (medium)</li>
-      <li>TL–DE alignment: <strong>0.4</strong> (low)</li>
-      <li>Data pipeline load: <strong>high</strong></li>
-      <li>Conflict risk (PM vs TL): <strong>0.7</strong></li>
-      <li>Decision latency: <strong>slow</strong></li>
+      <li><strong>alignment</strong> (0–1)</li>
+      <li><strong>load</strong> (low / medium / high)</li>
+      <li><strong>latency</strong> (fast / slow)</li>
+      <li><strong>conflict_risk</strong> (0–1)</li>
     </ul>
 
-    <h3>Signal interpretation</h3>
-    <p class="final-insight" id="final-insight">Inspect the graph: where load accumulates, where alignment breaks, where latency appears.</p>
+    <p class="final-insight" id="final-insight">Read the graph left-to-right: signals flow, accumulate, and sometimes hide the real bottleneck. The story above becomes obvious: the data pipeline's high load and low TL–DE alignment create hidden dependency latency — not a people problem, a structural one.</p>
   </div>
   <div class="scene__stage" id="final-stage" role="img" aria-labelledby="final-t final-d">
     <svg viewBox="0 0 560 420" class="final-graph-svg" id="final-graph" aria-hidden="false">
