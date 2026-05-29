@@ -55,7 +55,7 @@
     <p class="author">Author: Ruben van Dijk — thinking in graph structures — <a href="https://www.linkedin.com/in/r-van-dijk-ai/" rel="me noopener noreferrer" target="_blank">LinkedIn</a></p>
     <p class="read-time" id="read-time" aria-hidden="true">—</p>
     <div class="site-positioning" id="site-positioning">
-      <p><strong>Field notes from applied AI and engineering leadership.</strong> I frame teams as systems of connected nodes — decisions, people, constraints, and software — with signals, delays, reinforcement, and friction flowing across edges. These pages collect practical examples, visualizations, and tradeoffs for making decisions that actually propagate well in real systems.</p>
+      <p><strong>Field notes from applied AI and engineering leadership.</strong> This site is a set of visual experiments for thinking about organizations as dynamic systems. It is not a framework to adopt, nor a prescriptive model to apply. Instead these pages present a visual language — a notation and a set of sketches — that make invisible dynamics visible and invite personal interpretation.</p>
     </div>
 
     <div class="start-here" id="start-here">
@@ -114,7 +114,7 @@
 
     <!-- language-spec moved to Final Act -->
 
-    <div class="exec-summary" id="exec-summary">Practical notes on decision intelligence: how structure, timing, and signaling shape what an organization can and cannot do.</div>
+    <div class="exec-summary" id="exec-summary">A set of visual experiments for thinking about organizations as dynamic systems — exploratory, interpretive, and intentionally non-prescriptive.</div>
 
     <div class="why-this-exists" id="why-this-exists">
       <h3>Why this exists</h3>
@@ -533,9 +533,9 @@
     <h4>Turn the scene into a graph</h4>
     <p>We convert the story into nodes and edges: people (Ruth/PM, TL, DE); systems (backlog, data pipeline); constraints (capacity); decision (prioritise next sprint); goal (ship faster). Then we annotate: alignment between actors, pipeline load, and decision latency.</p>
 
-    <h4>Minimal language</h4>
-    <p>Here is the compact vocabulary I use to make annotations concise and comparable across cases.</p>
-    <h5>Node types</h5>
+    <h4>Legend &amp; notation</h4>
+    <p>This is a compact notation used to annotate the examples on this site. These are sketches — tools for reflection and shared understanding — not formal specifications or operational frameworks.</p>
+    <h5>Node types (common uses of the notation)</h5>
     <ul>
       <li><strong>Person</strong> — someone who acts (PM, TL, DE)</li>
       <li><strong>Decision</strong> — the specific choice to make (prioritisation)</li>
@@ -544,7 +544,7 @@
       <li><strong>Goal</strong> — what success looks like (ship faster)</li>
     </ul>
 
-    <h5>Edge types</h5>
+    <h5>Edge types (examples, not rules)</h5>
     <ul>
       <li><strong>depends_on</strong> — A needs B to finish work</li>
       <li><strong>influences</strong> — A shapes B's choices (soft)</li>
@@ -553,8 +553,8 @@
       <li><strong>communicates_to</strong> — information flow</li>
     </ul>
 
-    <h5>Signals</h5>
-    <p>Annotate each node/edge with a few qualitative signals:</p>
+    <h5>Signals (guidelines for interpretation)</h5>
+    <p>Annotate each node/edge with a few qualitative signals. These signals are descriptive cues to support interpretation, not prescriptive measures:</p>
     <ul>
       <li><strong>alignment</strong> (0–1)</li>
       <li><strong>load</strong> (low / medium / high)</li>
@@ -563,14 +563,16 @@
     </ul>
 
     <p class="final-insight" id="final-insight">Read the graph left-to-right: signals flow, accumulate, and sometimes hide the real bottleneck. The story above becomes obvious: the data pipeline's high load and low TL–DE alignment create hidden dependency latency — not a people problem, a structural one.</p>
-    <h4>Lead of leaders — coaching at the network level</h4>
-    <p>Leaders who coach other leaders work two layers up: they help those leaders both do the content work and see the organizational dynamics so the right edges get priority.</p>
+    <h4>A short note on these graphs</h4>
+    <p>These visualizations are intentionally incomplete. They are not formal models, operational frameworks, or standards to apply. They are representations — notation and sketches — intended to make some dynamics visible and to prompt reflection and discussion. Use them as a lens or thought experiment, and adapt them to your context rather than treating them as prescriptive rules.</p>
+    <h4>Lead of leaders — a network-level lens</h4>
+    <p>One role a leader can take is to help other leaders notice and interpret organizational dynamics. The aim is to increase shared visibility so decisions can better target structural issues, not to prescribe a single way to act.</p>
     <ul>
-      <li><strong>Raise meta-awareness:</strong> help leaders surface alignment, load, and latency across their teams so decisions target structural bottlenecks.</li>
-      <li><strong>Prioritise edges:</strong> coaching guides which relationships or systems deserve immediate attention (pipeline fixes, backlog reshaping, partner alignment), not just people conversations.</li>
-      <li><strong>Enable hands-on support:</strong> equip leaders to roll up their sleeves when needed — clarifying specs, pairing on critical fixes, or reshaping work to unblock teams.</li>
+      <li><strong>Surface meta-awareness:</strong> support leaders in making alignment, load, and latency visible so they can make more informed, context-sensitive choices.</li>
+      <li><strong>Consider edges:</strong> when appropriate, focus attention on relationships or systems that appear to constrain flow (for example, pipeline fragility or backlog shape) as hypotheses to explore.</li>
+      <li><strong>Provide practical support:</strong> where helpful, join the work or enable hands-on collaboration to test changes — as experiments rather than mandates.</li>
     </ul>
-    <p class="aside">In short: coach leaders to see networks, prioritise the right edges, and be willing to do—or enable—the content work that changes the weights.</p>
+    <p class="aside">In short: help leaders notice network dynamics, treat interventions as experiments, and privilege shared exploration over prescriptive answers.</p>
 
     <!-- React snippet removed — learned from it and refined arrowheads instead -->
   </div>
