@@ -106,8 +106,8 @@ body {
 .cat-icon { width: 22px; height: 22px; flex-shrink: 0; color: var(--good); }
 .content-index a { color: var(--ink-0); text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.06); padding-bottom: 2px; }
  .content-index a:hover { text-decoration: underline; }
-.content-index ul { margin: 0; padding-left: 1rem; color: var(--ink-1); }
-.content-index li { margin: .25rem 0; }
+.content-index ul { margin: 0; padding-left: 0; list-style: none; color: var(--ink-1); }
+.content-index li { margin: .45rem 0; }
 .content-index a { color: var(--ink-0); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 800px) { .content-index__cols { flex-direction: column; } }
 
