@@ -1166,8 +1166,10 @@ function buildFinalAct() {
 
   // defs: arrow marker (thinner, smaller)
   const defs = el('defs', {}, svg);
-  const arrowMarker = el('marker', { id: 'arrow', markerWidth: 6, markerHeight: 6, refX: 5, refY: 3.5, orient: 'auto' }, defs);
-  el('path', { d: 'M0,2 L6,3.5 L0,5 z', fill: '#9aa7ff', opacity: 0.95 }, arrowMarker);
+  // markerUnits='strokeWidth' makes the marker scale with the line's stroke width
+  const arrowMarker = el('marker', { id: 'arrow', markerWidth: 6, markerHeight: 6, refX: 4.5, refY: 3.5, orient: 'auto', markerUnits: 'strokeWidth' }, defs);
+  // Slim, slightly open triangle to reduce visual weight
+  el('path', { d: 'M0,1.5 L5,3.5 L0,5.5 z', fill: '#9aa7ff', opacity: 0.9 }, arrowMarker);
 
   // Node positions
   const positions = {
