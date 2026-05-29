@@ -3,35 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>You Are a Weight — A Neural Story of Leadership</title>
-  <meta name="description" content="A scrollable, scientifically grounded story about how leaders alter the invisible weights of the networks around them." />
+  <title>You Are a Weight — Decision intelligence field notes from applied AI and engineering leadership</title>
+  <meta name="description" content="Field notes on decision intelligence, applied AI, and engineering leadership. Practical observations about systems, coordination, and tradeoffs in real-world teams." />
+  <!-- Open Graph / Twitter metadata (updated dynamically by JS) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="You Are a Weight" />
+  <meta property="og:title" content="You Are a Weight — Decision intelligence field notes" />
+  <meta property="og:description" content="Field notes on decision intelligence, applied AI, and engineering leadership. Practical observations about systems, coordination, and tradeoffs in real-world teams." />
+  <meta property="og:image" content="/story/banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/story/banner.png" />
+  <!-- Link to author's LinkedIn profile (used in header/footer) -->
+  <meta name="linkedin:profile" content="https://www.linkedin.com/in/r-van-dijk-ai/" />
+  <!-- Analytics: GoatCounter + local eventLayer -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<a class="skip-link" href="#act-1">Skip to story</a>
-
+  <div id="progress-bar" aria-hidden="true"></div>
 <!-- ────────────────────────── Floating TOC ────────────────────────── -->
 <nav class="toc" aria-label="Table of contents">
   <button class="toc__toggle" aria-expanded="false" aria-controls="toc-list" title="Table of contents">
     <span class="toc__bars" aria-hidden="true"></span>
   </button>
   <ol id="toc-list" class="toc__list">
-    <li><a href="#act-1"><span class="num">I</span>The invisible edge</a></li>
-    <li><a href="#act-2"><span class="num">II</span>The substrate</a></li>
-    <li><a href="#act-3"><span class="num">III</span>STDP — order matters</a></li>
-    <li><a href="#act-4"><span class="num">IV</span>Asymmetric decay</a></li>
-    <li><a href="#act-5"><span class="num">V</span>Summation — the threshold to act</a></li>
-    <li><a href="#act-6"><span class="num">VI</span>The cascade</a></li>
-    <li><a href="#act-7"><span class="num">VII</span>Mirror neurons</a></li>
-    <li><a href="#act-8"><span class="num">VIII</span>The 5:1 arithmetic</a></li>
-    <li><a href="#act-9"><span class="num">IX</span>Refractory — when to repair</a></li>
-    <li><a href="#act-10"><span class="num">X</span>The cut vertex</a></li>
-    <li><a href="#act-11"><span class="num">XI</span>Attractor basins</a></li>
-    <li><a href="#act-12"><span class="num">XII</span>In the deep</a></li>
-    <li><a href="#act-13"><span class="num">XIII</span>Growing new nodes</a></li>
-    <li><a href="#act-14"><span class="num">XIV</span>Sarah's three futures</a></li>
-    <li><a href="#act-15"><span class="num">XV</span>The mirror</a></li>
+    <li><a href="#act-1"><span class="num">I</span><span class="toc__title">The invisible edge</span></a></li>
+    <li><a href="#act-2"><span class="num">II</span><span class="toc__title">The substrate</span></a></li>
+    <li><a href="#act-3"><span class="num">III</span><span class="toc__title">STDP — order matters</span></a></li>
+    <li><a href="#act-4"><span class="num">IV</span><span class="toc__title">Asymmetric decay</span></a></li>
+    <li><a href="#act-5"><span class="num">V</span><span class="toc__title">Summation — the threshold to act</span></a></li>
+    <li><a href="#act-6"><span class="num">VI</span><span class="toc__title">The cascade</span></a></li>
+    <li><a href="#act-7"><span class="num">VII</span><span class="toc__title">Mirror neurons</span></a></li>
+    <li><a href="#act-8"><span class="num">VIII</span><span class="toc__title">The 5:1 arithmetic</span></a></li>
+    <li><a href="#act-9"><span class="num">IX</span><span class="toc__title">Refractory — when to repair</span></a></li>
+    <li><a href="#act-10"><span class="num">X</span><span class="toc__title">The cut vertex</span></a></li>
+    <li><a href="#act-11"><span class="num">XI</span><span class="toc__title">Attractor basins</span></a></li>
+    <li><a href="#act-12"><span class="num">XII</span><span class="toc__title">In the deep</span></a></li>
+    <li><a href="#act-13"><span class="num">XIII</span><span class="toc__title">Relational health</span></a></li>
+    <li><a href="#act-14"><span class="num">XIV</span><span class="toc__title">Sarah's three futures</span></a></li>
+    <li><a href="#act-15"><span class="num">XV</span><span class="toc__title">The mirror</span></a></li>
+    <li><a href="#act-16"><span class="num">XVI</span><span class="toc__title">The attention field</span></a></li>
+    <li><a href="#act-17"><span class="num">XVII</span><span class="toc__title">Planned absence</span></a></li>
+    <li><a href="#act-18"><span class="num">XVIII</span><span class="toc__title">The return path</span></a></li>
+    <li><a href="#act-19"><span class="num">XIX</span><span class="toc__title">Weak ties</span></a></li>
+    <li><a href="#act-20"><span class="num">XX</span><span class="toc__title">Preferential attachment</span></a></li>
+    <li><a href="#act-21"><span class="num">XXI</span><span class="toc__title">Incoming load</span></a></li>
+    <li><a href="#act-final"><span class="num">Final</span><span class="toc__title">Field notes</span></a></li>
   </ol>
 </nav>
 
@@ -39,8 +58,35 @@
 <header class="title">
   <div class="title__inner">
     <h1><span class="you">You</span> are a <em>weight</em><br/>in someone else's network.</h1>
-    <p class="sub">A neural story of leadership, in fifteen acts.</p>
-    <p class="meta">Hover any <cite class="cite-inline" data-cite="hebb1949">[citation]</cite> for the source. Scroll to begin.</p>
+
+    <svg class="hero-edge" viewBox="0 0 400 120" role="img" aria-label="A pulse traveling along an edge between two nodes; the edge scars on arrival">
+      <defs>
+        <radialGradient id="heroNodeGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+          <stop offset="60%" stop-color="#9aa7ff" stop-opacity=".5"/>
+          <stop offset="100%" stop-color="#9aa7ff" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="heroGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <line class="hero-edge__line" x1="80" y1="60" x2="320" y2="60"/>
+      <circle class="hero-edge__node" cx="80"  cy="60" r="26" fill="url(#heroNodeGlow)" filter="url(#heroGlow)"/>
+      <circle class="hero-edge__node" cx="320" cy="60" r="26" fill="url(#heroNodeGlow)" filter="url(#heroGlow)"/>
+      <circle class="hero-edge__pulse" cx="80" cy="60" r="4"/>
+    </svg>
+
+    <p class="sub">A neural story of leadership, in twenty-one acts.</p>
+    <p class="meta">Field notes from applied AI and engineering leadership — not a framework.</p>
+    <p class="author">Ruben van Dijk · <a href="https://www.linkedin.com/in/r-van-dijk-ai/" rel="me noopener noreferrer" target="_blank">LinkedIn</a> · <span class="read-time" id="read-time" aria-hidden="true">—</span></p>
+
+    <details class="about-site">
+      <summary>About this site</summary>
+      <p>A set of visual experiments for thinking about organizations as dynamic systems — exploratory, interpretive, intentionally non-prescriptive. The pages present a notation: nodes, edges, weights, signals. The mechanics work wherever there are connections — teams, families, departments, cities.</p>
+      <p>Hover any <cite class="cite-inline" data-cite="hebb1949">[citation]</cite> for its source.</p>
+    </details>
+
     <div class="scroll-hint" aria-hidden="true"></div>
   </div>
 </header>
@@ -50,7 +96,8 @@
   <div class="scene__copy">
     <span class="chapter">I · The invisible edge</span>
     <h2>One sentence. Ten witnesses. Six weeks of silent re-routing.</h2>
-    <p>Sarah didn't shout. She asked Marcus a question with a half-second of held eye contact. Nothing dramatic happened. And then the organization began to flow <em>around</em> her instead of through her.</p>
+    <p>Sarah didn't shout. She asked Marcus a question she already knew the answer to — in front of ten people, without warning. Not to learn. To establish. The question was a display of hierarchy, not an exchange of information. No one named what had happened.</p>
+    <p>And then the organization began to flow <em>around</em> her instead of through her.</p>
     <p class="aside">She didn't change. The <strong>weights</strong> did.<cite class="cite-inline" data-cite="hebb1949">[Hebb, 1949]</cite></p>
   </div>
   <div class="scene__stage">
@@ -103,7 +150,9 @@
     <span class="chapter">III · STDP — order matters</span>
     <h2>The same words. Different order. Opposite weights.</h2>
     <p>Spike-Timing-Dependent Plasticity is the precise version of Hebb's rule: a connection strengthens when the upstream neuron fires <em>just before</em> the downstream one, and weakens when the order is reversed.<cite class="cite-inline" data-cite="bi-poo1998">[Bi & Poo, 1998]</cite></p>
-    <p>The leadership translation: <strong>give context before you give the ask</strong> — connection strengthens. <strong>Demand first, explain later</strong> — the same words depress the same connection.</p>
+    <p>When the context neuron fires first — the receiver understands the <em>why</em> before the <em>what</em> arrives — the connection records: <em>this person brings comprehension before demand</em>. Weight strengthens.</p>
+    <p>When the ask fires first: someone asks you to deliver something by Friday without telling you why Friday matters. The ask fires. Context hasn't arrived. The connection records: <em>pressure before understanding</em>. Δt is negative. Weight depressed. Repeat across a quarter and the connection itself changes — the relationship has learned what this person brings.</p>
+    <p>Slider right (Δt &gt; 0): context before ask. Slider left (Δt &lt; 0): ask before context — watch the weight go the other way.</p>
     <p class="aside">Drag the slider to set Δt between pre- and post-synaptic spikes.</p>
   </div>
   <div class="scene__stage" id="stdp-stage"></div>
@@ -162,7 +211,7 @@
     <span class="chapter">VI · The cascade</span>
     <h2>One signal. Hundreds of witnesses who never saw it.</h2>
     <p>When you fire, a wavefront leaves down every edge you have. Each next node fires its own wavefront, attenuated by the weight it crossed. By the third degree your name is gone — only the <em>tone</em> remains.<cite class="cite-inline" data-cite="pentland2014">[Pentland, 2014]</cite></p>
-    <p class="aside">Real signals don't just propagate outward — they return, attenuated and distorted. Watch for the feedback arc.</p>
+    <p class="aside">Your signal doesn't stop at the perimeter. It returns — attenuated, edited, stripped of its original context. What travels outward as content arrives back as <em>impression</em>. You cannot correct what you cannot observe. The feedback arc is the reason a leader can be confident they communicated clearly while the team experienced something entirely different.</p>
   </div>
   <div class="scene__stage" id="cascade-stage"></div>
 </section>
@@ -173,8 +222,9 @@
     <span class="chapter">VII · Mirror neurons</span>
     <h2>Watching is firing.</h2>
     <p>Rizzolatti's team in Parma discovered neurons that fire <em>both</em> when a monkey performs an action <em>and</em> when it merely watches another perform the same action.<cite class="cite-inline" data-cite="riz1996">[Rizzolatti et al., 1996]</cite></p>
-    <p>This is the biological substrate of <em>emotional contagion</em>.<cite class="cite-inline" data-cite="hatfield1993">[Hatfield et al., 1993]</cite> When a leader walks in visibly anxious, observers' mirror systems aren't <em>interpreting</em> the anxiety — they are <em>reproducing</em> it. The room becomes anxious before anyone speaks.</p>
+    <p>This is one proposed substrate of <em>emotional contagion</em>.<cite class="cite-inline" data-cite="hatfield1993">[Hatfield et al., 1993]</cite> When a leader walks in visibly anxious, observers' mirror systems aren't <em>interpreting</em> the anxiety — they are <em>reproducing</em> it. The room becomes anxious before anyone speaks.</p>
     <p>You are broadcasting your internal state at full bandwidth, all the time.</p>
+    <p>Social referencing research shows that when a situation is ambiguous — a sound from outside, a result that could be read two ways — adults and infants alike turn to the person with authority in the room to calibrate their own response. The leader's face, posture, and vocal tone resolve the ambiguity. The group's emotional register synchronises to the leader's, typically within minutes, and before a word of evaluation has been spoken. The signal is structural, not intentional.</p>
   </div>
   <div class="scene__stage" id="mirror-neuron-stage"></div>
 </section>
@@ -184,7 +234,7 @@
   <div class="scene__copy">
     <span class="chapter">VIII · The 5:1 arithmetic</span>
     <h2>One bruise costs five caresses.</h2>
-    <p>Gottman could predict divorce with &gt;90% accuracy from the ratio of positive to negative interactions in a 15-minute conversation.<cite class="cite-inline" data-cite="gottman1999">[Gottman & Silver, 1999]</cite> The same arithmetic governs teams.</p>
+    <p>Gottman found that the ratio of positive to negative interactions in a 15-minute conversation was among the strongest predictors of relationship outcome he measured.<cite class="cite-inline" data-cite="gottman1999">[Gottman & Silver, 1999]</cite> The same arithmetic governs teams.</p>
     <p>This isn't a gradient — it's a <em>threshold</em>. Below 5:1 the relationship-neuron flips into a failure state, and failure states are sticky.</p>
     <p class="aside">Add or remove tokens. Feel the spring at the tipping point.</p>
   </div>
@@ -210,7 +260,7 @@
   <div class="scene__copy">
     <span class="chapter">IX · Refractory — when to repair</span>
     <h2>The right apology at the wrong time deepens the wound.</h2>
-    <p>After a neuron fires, it enters a refractory period — a window during which it cannot fire normally. Signals arriving inside this window are ignored or, worse, amplified into the existing activation.</p>
+    <p>After an emotionally significant event, the brain's limbic system remains in an elevated state of reactivity — a window during which incoming signals are processed differently. Inputs that would normally be neutral arrive amplified. Gestures that would ordinarily be reassuring register as further threat. The Monday after Sarah's question, Marcus was in his refractory window. Any contact would have landed in the hot phase.</p>
     <p>Relationships work the same way.<cite class="cite-inline" data-cite="cross2004">[Cross & Parker, 2004]</cite> An apology delivered into the amygdala's hot phase doesn't repair — it confirms threat. Wait too long, and decay has set the lower weight as baseline.</p>
     <p class="aside">Drag the apology pulse along the timeline. Watch the receiver's response.</p>
   </div>
@@ -234,7 +284,7 @@
     <h2>Cultures are not built. They are <em>settled into</em>.</h2>
     <p>Every organization sits in a basin of attraction — a stable state it returns to after perturbation. Small shocks roll the ball; it returns home. A large enough shock can push it over the ridge into a <em>different</em> basin.<cite class="cite-inline" data-cite="strogatz2018">[Strogatz, 2018]</cite></p>
     <p>This is why some teams shrug off setbacks while others spiral. The <em>shape of the landscape</em> determines the recovery, not the size of the shock.</p>
-    <p class="aside">Drag inside the scene to rotate. Click to perturb the ball — find the second basin.<br/><em>Sarah's team settled into a basin of cautious silence in the weeks after that meeting. The landscape was already shaped — the question is who shaped it, and whether it can be reshaped.</em></p>
+    <p class="aside">Drag inside the scene to rotate. Click to perturb the ball — find the second basin.<br/><em>Sarah's team settled into a basin of cautious silence in the weeks after that meeting. The landscape was already shaped — the question is who shaped it, and whether it can be reshaped. Marcus had stopped proposing alternatives in meetings. The basin had found its floor.</em></p>
   </div>
   <div class="scene__stage" id="attractor-stage"></div>
 </section>
@@ -260,16 +310,17 @@
   </div>
 </section>
 
-<!-- ═══════════════ ACT XIII — GROWING NEW NODES ═══════════════ -->
+<!-- ═══════════════ ACT XIII — RELATIONAL HEALTH ═══════════════ -->
 <section class="scene scene--empower" id="act-13">
   <div class="scene__copy">
-    <span class="chapter">XIII · Growing new nodes</span>
-    <h2>The leader who only tends eventually produces followers who only tend.</h2>
-    <p>There is a second failure mode beyond the elevator person: the leader who is <em>present</em> in the deep — but alone there. They carry the cognitive mass. They are the only node with high betweenness <em>and</em> high depth. When they leave, they take both the bridges and the knowledge.</p>
-    <p>Hebbian plasticity is not contagious by proximity. It is contagious by <em>co-firing</em>. When you do content work <em>with</em> someone — not briefing them on your conclusions, but thinking inside the problem with them as a peer — their weights strengthen alongside yours.<cite class="cite-inline" data-cite="hebb1949">[Hebb, 1949]</cite> You are not the bottleneck anymore; you are the catalyst.</p>
-    <blockquote class="pullquote">The signal you should propagate most is not <em>what</em> you concluded. It is <em>how</em> you think.</blockquote>
-    <p>A star topology (every edge runs through you) and a distributed mesh (nodes building their own outgoing edges) are not equally resilient. The mesh survives your absence. The star collapses.<cite class="cite-inline" data-cite="cross2004">[Cross &amp; Parker, 2004]</cite> Empowerment is not a management virtue — it is a structural property. You are either distributing <em>eigenvalue</em> or hoarding it.</p>
-    <p class="aside">The two-panel below shows the same team at two different points in time. Left: the leader is the only deep node. Right: the leader has co-fired with three others — they now generate signal independently. Observe what changes when the leader node is removed.</p>
+    <span class="chapter">XIII · Relational health</span>
+    <h2>The capacity to speak up is a structural property, not a personal one.</h2>
+    <p>In a star topology, every edge terminates at the hub. When something in the team is wrong — a recurring dynamic, a pattern of behaviour no one has named — there is one formal path for raising it: upward. That is also where most of the risk lives.</p>
+    <p>Peer connections change this. When team members co-fire — working inside the same problem as peers, not just reporting conclusions to a single hub — the weights between them strengthen.<cite class="cite-inline" data-cite="hebb1949">[Hebb, 1949]</cite> A connection strong enough to carry a project can also carry a harder conversation: <em>"I want to check something with you before I escalate."</em></p>
+    <blockquote class="pullquote">Relational health is not a culture property. It is a network structure property.</blockquote>
+    <p>The mesh is what makes horizontal accountability possible — and what allows a toxic dynamic to be named while it is still small, before the network has routed around it entirely. In a star, the person who witnesses something harmful has one formal path and several informal ones: silence, rumour, or leaving. In a mesh, they have peers with enough shared context to think about it together.<cite class="cite-inline" data-cite="cross2004">[Cross &amp; Parker, 2004]</cite></p>
+    <p>Specialists can remain specialists. The question is whether they also have direct edges to people outside their lane — connections strong enough to carry the signal when the signal matters.</p>
+    <p class="aside">The two-panel below shows the same team at two different points in time. Left: every edge runs through the leader. Right: three peers have developed direct strong connections. Remove the central node to see what remains. Also consider: who could have named something difficult in each topology — and to whom?</p>
   </div>
   <div class="scene__stage" id="empower-stage"></div>
 </section>
@@ -278,8 +329,8 @@
 <section class="scene scene--futures" id="act-14">
   <div class="scene__copy">
     <span class="chapter">XIV · Sarah's three futures</span>
-    <h2>The fork she didn't know she was at.</h2>
-    <p>It's the Monday after the meeting. Sarah feels the network has shifted but can't name how. She has a choice.</p>
+    <h2>Three choices. One of them Sarah doesn't know she's making.</h2>
+    <p>It's Monday morning. Sarah arrives early and doesn't know why. She finds herself checking the thread from last week's meeting, looking for what she might have missed, and finding nothing she can point to. She knows something shifted. She makes a choice — and in doing so, chooses what her weights become.</p>
     <div class="futures-choices" role="group" aria-label="Choose Sarah's next move">
       <button class="future-btn" data-future="immediate">
         <span class="future-btn__num">A</span>
@@ -298,6 +349,7 @@
       </button>
     </div>
     <p class="future-result" id="future-result" aria-live="polite"></p>
+    <p class="aside" style="font-size:.8rem;margin-top:.5rem;">Network colours: <span style="color:#7fffa3">green = healthy weight</span> · <span style="color:#ff5d7a">red = scarred</span> · <span style="color:#3d4564">faded = re-routed around</span></p>
   </div>
   <div class="scene__stage" id="futures-stage"></div>
 </section>
@@ -307,11 +359,194 @@
   <div class="scene__copy">
     <span class="chapter">XV · The mirror</span>
     <h2>You cannot observe your own propagation.</h2>
-    <p>You fire. The wavefront leaves. You never see it arrive at the third degree, attenuated, carrying a ghost of your Tuesday afternoon to a team that has no context for it.</p>
+    <p>You fire. The wavefront leaves. You never see it arrive at the third degree, attenuated, carrying a ghost of your Tuesday afternoon to a team that has no context for it. Sarah never heard how Marcus described that meeting to his peers. She heard her own version, twice.</p>
     <p>95% of leaders believe they're self-aware. 10–15% actually are.<cite class="cite-inline" data-cite="eurich2017">[Eurich, 2017]</cite> The gap isn't arrogance — it's an architectural limitation. You can observe your <em>intent</em>. You cannot observe your <em>impact</em>.</p>
     <p>What's needed isn't surveillance. It's a <strong>mirror for a system you cannot otherwise see</strong>.</p>
+    <p>What you need is someone who saw where your signal arrived, not where you sent it from. A colleague who tells you what the room felt after you left. A team that has been asked — specifically, not in a survey that signals nothing will change — what reached them and what didn't.</p>
   </div>
   <div class="scene__stage" id="mirror-stage"></div>
+</section>
+
+<!-- ═══════════════ ACT XVI — ATTENTION FIELD ═══════════════ -->
+<section class="scene scene--attention" id="act-16">
+  <div class="scene__copy">
+    <span class="chapter">XVI · The attention field</span>
+    <h2>You cannot tell people what matters. You can only show them where you look.</h2>
+    <p>Transformers process every input simultaneously, but not equally. An attention mechanism assigns a weight to each element for each context: some tokens matter enormously for the current output, others barely at all. The model learns what to care about by learning what to attend to.</p>
+    <p>Every leader runs an attention mechanism. Where you ask follow-up questions, who you quote in presentations, which risks you make visible in a status meeting — these are the attention weights your team internalizes. You train what is worth worrying about not by declaring it, but by the pattern of where you slow down.</p>
+    <p>The engineer who learns that you only engage deeply with shipping velocity, and never with technical debt or human cost, will eventually stop modeling those things as worth surfacing.</p>
+    <p class="aside">The question is not only what you value — it is what your attention weights signal you value, every week, to the people watching.</p>
+  </div>
+  <div class="scene__stage">
+    <svg viewBox="0 0 400 400" class="attn-svg" role="img" aria-label="Attention weight allocation">
+      <circle cx="80" cy="200" r="24" class="attn-leader"/>
+      <text x="80" y="240" class="attn-lbl">you</text>
+      <line x1="104" y1="188" x2="286" y2="72"  class="attn-beam attn-hi"/>
+      <line x1="104" y1="194" x2="286" y2="140" class="attn-beam attn-hi"/>
+      <line x1="104" y1="200" x2="286" y2="200" class="attn-beam attn-med"/>
+      <line x1="104" y1="206" x2="286" y2="262" class="attn-beam attn-lo"/>
+      <line x1="104" y1="212" x2="286" y2="330" class="attn-beam attn-lo"/>
+      <circle cx="306" cy="72"  r="20" class="attn-peer attn-peer-hi"/>
+      <circle cx="306" cy="140" r="20" class="attn-peer attn-peer-hi"/>
+      <circle cx="306" cy="200" r="14" class="attn-peer attn-peer-med"/>
+      <circle cx="306" cy="262" r="10" class="attn-peer attn-peer-lo"/>
+      <circle cx="306" cy="330" r="10" class="attn-peer attn-peer-lo"/>
+      <text x="200" y="38"  class="attn-annot">learns to matter</text>
+      <text x="200" y="378" class="attn-annot attn-annot-dim">learns to not matter</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════ ACT XVII — PLANNED ABSENCE ═══════════════ -->
+<section class="scene scene--dropout" id="act-17">
+  <div class="scene__copy">
+    <span class="chapter">XVII · Planned absence</span>
+    <h2>The network that has never run without you cannot survive your absence.</h2>
+    <p>In neural network training, <em>dropout</em> is deliberate: during each pass, a random fraction of neurons is silenced. The network cannot route through any single bottleneck. It must build distributed representations across many pathways. When all neurons are restored, the result generalizes — not a model that memorized one efficient path through a convenient hub.</p>
+    <p>If your team has never run a sprint without you making the key calls, they will not run one well when you are unavailable. The network that has never run without its centre has no practiced path around it. When the centre is removed — by promotion, by illness, by choice — the paths that form are improvisational, not structural.</p>
+    <p>This is not delegation as relief. It is dropout as method: building the alternative pathways while the stakes are low enough to let them form imperfectly.</p>
+    <p class="aside">The goal is not a team that functions without you. The goal is a network that generates its own signal — one that no longer routes all cognition through a single hub.</p>
+  </div>
+  <div class="scene__stage">
+    <svg viewBox="0 0 400 400" class="dropout-svg" role="img" aria-label="Star topology versus distributed mesh after dropout">
+      <line x1="200" y1="35" x2="200" y2="375" class="do-divider"/>
+      <text x="100" y="22" class="do-label">star — never alone</text>
+      <text x="300" y="22" class="do-label">mesh — after dropout</text>
+      <!-- Left: star -->
+      <circle cx="100" cy="210" r="18" class="do-center"/>
+      <text x="100" y="248" class="do-label">you</text>
+      <circle cx="100" cy="135" r="11" class="do-leaf"/>
+      <circle cx="171" cy="187" r="11" class="do-leaf"/>
+      <circle cx="144" cy="271" r="11" class="do-leaf"/>
+      <circle cx="56"  cy="271" r="11" class="do-leaf"/>
+      <circle cx="29"  cy="187" r="11" class="do-leaf"/>
+      <line x1="100" y1="192" x2="100" y2="146"  class="do-edge"/>
+      <line x1="116" y1="203" x2="161" y2="192"  class="do-edge"/>
+      <line x1="112" y1="222" x2="138" y2="261"  class="do-edge"/>
+      <line x1="88"  y1="222" x2="63"  y2="261"  class="do-edge"/>
+      <line x1="84"  y1="203" x2="39"  y2="192"  class="do-edge"/>
+      <!-- Right: mesh -->
+      <circle cx="300" cy="210" r="18" class="do-center do-center-absent"/>
+      <circle cx="300" cy="135" r="11" class="do-leaf"/>
+      <circle cx="371" cy="187" r="11" class="do-leaf"/>
+      <circle cx="344" cy="271" r="11" class="do-leaf"/>
+      <circle cx="256" cy="271" r="11" class="do-leaf"/>
+      <circle cx="229" cy="187" r="11" class="do-leaf"/>
+      <line x1="300" y1="135" x2="371" y2="187" class="do-edge-new"/>
+      <line x1="371" y1="187" x2="344" y2="271" class="do-edge-new"/>
+      <line x1="344" y1="271" x2="256" y2="271" class="do-edge-new"/>
+      <line x1="256" y1="271" x2="229" y2="187" class="do-edge-new"/>
+      <line x1="229" y1="187" x2="300" y2="135" class="do-edge-new"/>
+      <line x1="300" y1="192" x2="300" y2="146"  class="do-edge do-edge-faded"/>
+      <line x1="316" y1="203" x2="361" y2="192"  class="do-edge do-edge-faded"/>
+      <line x1="312" y1="222" x2="338" y2="261"  class="do-edge do-edge-faded"/>
+      <line x1="288" y1="222" x2="263" y2="261"  class="do-edge do-edge-faded"/>
+      <line x1="284" y1="203" x2="239" y2="192"  class="do-edge do-edge-faded"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════ ACT XVIII — THE RETURN PATH ═══════════════ -->
+<section class="scene scene--backprop" id="act-18">
+  <div class="scene__copy">
+    <span class="chapter">XVIII · The return path</span>
+    <h2>A network that cannot send error backwards can only learn from success.</h2>
+    <p>Neural networks learn through backpropagation: a signal travels forward through the layers to produce an output; the error between that output and the desired result travels <em>backward</em>, updating the weights that produced the deviation. Without the return path, the weights that caused the error never see it.</p>
+    <p>Many hierarchies are optimized for the forward pass. Decisions propagate downward with reasonable fidelity. The error signal rarely travels upward at the same fidelity. Leaders absorb it — shielding teams from bad news, translating failure into lessons, reframing disappointment as learning. The intent is protective. The architecture is self-insulating.</p>
+    <p>The people closest to the output hold the error signal. When that signal cannot propagate back to where the decision was made, the decision-making weights don't update. The network makes the same mistake with the same confidence, in the same conditions.</p>
+    <p class="aside">The highest-leverage question in any post-mortem is not <em>'what went wrong?'</em> It is: <em>'which weight produced this output, and did it see the error?'</em></p>
+  </div>
+  <div class="scene__stage">
+    <svg viewBox="0 0 400 400" class="bp-svg" role="img" aria-label="Backpropagation: error signal absorbed at middle layer">
+      <defs>
+        <marker id="fwd-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L7,3 z" fill="#9aa7ff" opacity="0.6"/>
+        </marker>
+        <marker id="err-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L7,3 z" fill="#ff5d7a" opacity="0.9"/>
+        </marker>
+      </defs>
+      <text x="200" y="30"  class="bp-layer-label">decisions</text>
+      <text x="200" y="165" class="bp-layer-label">execution</text>
+      <text x="200" y="300" class="bp-layer-label">outcomes</text>
+      <circle cx="120" cy="55"  r="13" class="bp-node"/>
+      <circle cx="200" cy="55"  r="13" class="bp-node"/>
+      <circle cx="280" cy="55"  r="13" class="bp-node"/>
+      <circle cx="120" cy="185" r="13" class="bp-node"/>
+      <circle cx="200" cy="185" r="13" class="bp-node"/>
+      <circle cx="280" cy="185" r="13" class="bp-node"/>
+      <circle cx="120" cy="320" r="13" class="bp-node"/>
+      <circle cx="200" cy="320" r="13" class="bp-node bp-node-error"/>
+      <circle cx="280" cy="320" r="13" class="bp-node"/>
+      <line x1="120" y1="68"  x2="120" y2="171" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="200" y1="68"  x2="200" y2="171" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="280" y1="68"  x2="280" y2="171" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="120" y1="198" x2="120" y2="306" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="200" y1="198" x2="200" y2="306" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <line x1="280" y1="198" x2="280" y2="306" class="bp-fwd" marker-end="url(#fwd-arrow)"/>
+      <circle cx="200" cy="320" r="9" class="bp-error-dot"/>
+      <line x1="192" y1="306" x2="192" y2="199" class="bp-err" marker-end="url(#err-arrow)"/>
+      <line x1="192" y1="171" x2="192" y2="69"  class="bp-err bp-err-blocked" marker-end="url(#err-arrow)"/>
+      <text x="370" y="183" class="bp-note">absorbed ←</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════ ACT XIX — WEAK TIES ═══════════════ -->
+<section class="scene scene--weakties" id="act-19">
+  <div class="scene__copy">
+    <span class="chapter">XIX · Weak ties</span>
+    <h2>The bridge you almost forgot reaches further than any of your close ones.</h2>
+    <p>Mark Granovetter showed in 1973 that when people found new opportunities, they found them overwhelmingly through <em>weak ties</em> — acquaintances, not close friends.<cite class="cite-inline" data-cite="granovetter1973">[Granovetter, 1973]</cite></p>
+    <p>Your close connections share your world. They know the same people, see the same problems, hold the same assumptions. Weak ties span <em>different</em> worlds. The barely-maintained connection to someone in a different domain, team, or city is the one that carries information your dense inner network doesn't have.</p>
+    <p>This holds at every scale — not just at work. The rarely-called friend in a different field. The department your team almost never collaborates with. The family member who moves in entirely different circles. Each is a bridge to a different cluster, and bridges are where new things arrive.</p>
+    <p>Neglected connections are not just relationships at risk. They are information pathways quietly closing.</p>
+    <p class="aside">Toggle the bridge to see what becomes unreachable. The signal does not stop — it just stops crossing.</p>
+  </div>
+  <div class="scene__stage" id="weakties-stage"></div>
+</section>
+
+<!-- ═══════════════ ACT XX — PREFERENTIAL ATTACHMENT ═══════════════ -->
+<section class="scene scene--pref" id="act-20">
+  <div class="scene__copy">
+    <span class="chapter">XX · Preferential attachment</span>
+    <h2>The already-connected attract more connections. This is not a flaw — it is the default.</h2>
+    <p>Barabási and Albert showed in 1999 that many real networks — the web, citation graphs, social systems — grow through preferential attachment: new nodes are far more likely to connect to nodes that already have many connections.<cite class="cite-inline" data-cite="barabasi1999">[Barabási &amp; Albert, 1999]</cite></p>
+    <p>The result is a <em>scale-free network</em> — a few enormous hubs and many nearly-invisible nodes. Not because the hubs are intrinsically better. Because they were earlier, more visible, or both.</p>
+    <p>The same force runs in organisations, friendships, and communities. The leader who is already well-connected receives more introductions. The department that is already well-known gets included in more conversations. The city with existing infrastructure attracts more investment. The dynamic is structural, not personal.</p>
+    <p>Growing new nodes — distributing influence, building bridges to the periphery — requires working deliberately against this gradient. Preferential attachment is the gravity of networks. You don't stop it by accident.</p>
+    <p class="aside">Watch how the network grows. Notice when the hub becomes inevitable.</p>
+  </div>
+  <div class="scene__stage" id="pref-stage"></div>
+</section>
+
+<!-- ═══════════════ ACT XXI — INCOMING LOAD ═══════════════ -->
+<section class="scene scene--nodehealth" id="act-21">
+  <div class="scene__copy">
+    <span class="chapter">XXI · Incoming load</span>
+    <h2>You are not only shaped by what you send. You are shaped by what arrives.</h2>
+    <p>Not all synaptic connections are excitatory. Many are <em>inhibitory</em> — they actively suppress the target neuron rather than activate it. In a healthy biological network, the balance between excitatory and inhibitory input is what makes stable, precise function possible.</p>
+    <p>A node that receives a sustained net-negative incoming load — chronic criticism, unresolved conflict, relationships that consistently drain rather than energise — does not remain the same node. Its capacity to generate and transmit signal decreases. Over time, it goes quiet, disconnects, or leaves.</p>
+    <p>This matters because it is invisible from the outside. The person attends the meetings. Their name is still in the org chart. But the weights on their incoming connections have crossed into net-negative territory, and their outgoing signal has attenuated accordingly.</p>
+    <p>The practical consequence: identifying and repairing the negative connections matters as much as building new positive ones. A single high-intensity inhibitory input can cancel many positive ones. This is as true in friendships and families as it is in teams.</p>
+    <p class="aside">Click any incoming edge to toggle its sign. Watch how the node responds to its net load.</p>
+  </div>
+  <div class="scene__stage" id="nodehealth-stage"></div>
+</section>
+
+<!-- ═════════════════════════════════════════ FINAL ACT — FIELD NOTES ═════════════════════════════════════════ -->
+<section class="scene scene--final" id="act-final">
+  <div class="scene__copy">
+    <span class="chapter">Final · Field notes</span>
+    <h2>What you've been reading all along.</h2>
+
+    <h4>A network-level lens</h4>
+    <p>These patterns appear at every scale. Helping any group — a team, a family, a department — make its own alignment and load visible is not a methodology. It is an act of attention. The notation works wherever there are nodes and connections. The labels change; the mechanics don't.</p>
+
+    <h4>Your own sketch</h4>
+    <p>Drag any node. Click two nodes to toggle the edge between them. Edges fade unless renewed — Ebbinghaus, applied. Now think of one connection you haven't reinforced in a while.</p>
+  </div>
+  <div class="scene__stage" id="sketch-stage"></div>
 </section>
 
 <!-- ────────────────────────── Closing ────────────────────────── -->
@@ -319,12 +554,12 @@
   <p class="closing__line">The network is already running.</p>
   <p class="closing__line">The signals are already propagating.</p>
   <p class="closing__line">The weights are already shifting.</p>
-  <p class="closing__line closing__line--strong">The only question is whether you're watching — and whether you're going about it <em>with intention</em>.</p>
+  <p class="closing__line closing__line--strong">You are already a weight in someone's network. The only question is whether you are choosing what kind.</p>
 
   <details class="bibliography">
     <summary>References</summary>
     <ul>
-      <li id="ref-hebb1949">Hebb, D. O. (1949). <em>The Organization of Behavior.</em> Wiley.</li>
+      <li id="ref-hebb1949">Hebb, D. O. (1949). <em>The Organization of Behavior.</em> Wiley. (The phrase 'cells that fire together, wire together' is Shatz, 1992, not Hebb's own words — Hebb's formulation was directional.)</li>
       <li id="ref-bi-poo1998">Bi, G., &amp; Poo, M. (1998). Synaptic modifications in cultured hippocampal neurons: dependence on spike timing, synaptic strength, and postsynaptic cell type. <em>J. Neuroscience, 18</em>(24), 10464–10472.</li>
       <li id="ref-ebb1885">Ebbinghaus, H. (1885). <em>Über das Gedächtnis.</em></li>
       <li id="ref-rosen1958">Rosenblatt, F. (1958). The perceptron. <em>Psychological Review, 65</em>(6), 386–408.</li>
@@ -337,17 +572,27 @@
       <li id="ref-strogatz2018">Strogatz, S. (2018). <em>Nonlinear Dynamics and Chaos</em> (2nd ed.). Westview.</li>
       <li id="ref-march1991">March, J. G. (1991). Exploration and exploitation in organizational learning. <em>Organization Science, 2</em>(1), 71–87.</li>
       <li id="ref-eurich2017">Eurich, T. (2017). <em>Insight.</em> Crown.</li>
+      <li id="ref-granovetter1973">Granovetter, M. (1973). The strength of weak ties. <em>American Journal of Sociology, 78</em>(6), 1360–1380.</li>
+      <li id="ref-barabasi1999">Barabási, A.-L., &amp; Albert, R. (1999). Emergence of scaling in random networks. <em>Science, 286</em>(5439), 509–512.</li>
+      <li id="ref-srivastava2014">Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., &amp; Salakhutdinov, R. (2014). Dropout: a simple way to prevent neural networks from overfitting. <em>Journal of Machine Learning Research, 15</em>(1), 1929–1958.</li>
+      <li id="ref-rumelhart1986">Rumelhart, D. E., Hinton, G. E., &amp; Williams, R. J. (1986). Learning representations by back-propagating errors. <em>Nature, 323</em>, 533–536.</li>
+      <li id="ref-vaswani2017">Vaswani, A., Shazeer, N., Parmar, N., et al. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems, 30</em>.</li>
     </ul>
   </details>
 
-  <button class="sound-toggle" id="sound-toggle" aria-pressed="false" title="Toggle audio cues">
-    <span class="sound-toggle__icon" aria-hidden="true"></span>
-    <span class="sound-toggle__label">sound off</span>
-  </button>
 </footer>
 
 <div class="cite-tooltip" id="cite-tooltip" role="tooltip" hidden></div>
 
 <script type="module" src="story.js"></script>
+
+<!-- Analytics: GoatCounter -->
+<script data-goatcounter="https://spinner3057.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<noscript>
+  <img src="https://spinner3057.goatcounter.com/count?p=/story"
+       alt="" referrerpolicy="no-referrer-when-downgrade"
+       style="position:absolute;left:-999em">
+</noscript>
 </body>
 </html>

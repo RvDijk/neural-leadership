@@ -4,7 +4,7 @@
    Loaded lazily via dynamic import; Three from esm.sh CDN (static-host friendly).
    ────────────────────────────────────────────────────────────────── */
 
-import { sfx } from './audio.js';
+const sfx = { perturb() {} };
 
 export async function mountAttractor(host) {
   // Dynamic import — only loads if user reaches this scene
