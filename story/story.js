@@ -4,6 +4,7 @@
    ────────────────────────────────────────────────────────────────── */
 
 import { sfx, setAudioEnabled, isAudioEnabled } from './audio.js';
+import * as analysis from './analysis.js';
 
 const SVG = 'http://www.w3.org/2000/svg';
 const el = (tag, attrs = {}, parent = null) => {
@@ -1195,7 +1196,7 @@ function buildFinalAct() {
     el('desc',  { id: `final-node-${k}-d` }, g).textContent = `Type: ${v.type}. Position: ${v.x}, ${v.y}.`;
     g.setAttribute('aria-labelledby', `final-node-${k}-t`);
     g.setAttribute('aria-describedby', `final-node-${k}-d`);
-    nodes[k] = v;
+    v.r = r; v.id = k; nodes[k] = v;
   });
 
   // Edges with annotations (alignment, load)
@@ -1245,6 +1246,37 @@ function buildFinalAct() {
 
   // Small interactive hint: clicking stage shows a suggested insight
   const insightEl = document.getElementById('final-insight');
+  // expose the graph for analysis tools
+  window.finalGraph = { nodes: Object.values(nodes).map(n => ({ id: n.id, x: n.x, y: n.y, r: n.r, type: n.type })), edges };
+
+  // small analysis controls
+  const controls = document.createElement('div');
+  controls.className = 'final-analysis-controls';
+  controls.innerHTML = `
+    <button class="btn" id="analyze-bottlenecks">Find bottlenecks</button>
+    <button class="btn" id="analyze-latency">High-latency paths</button>
+    <button class="btn" id="analyze-loops">Detect conflict loops</button>
+    <button class="btn" id="analyze-all">Run all</button>
+  `;
+  host.appendChild(controls);
+  const showResults = (txt) => { if (insightEl) insightEl.textContent = txt; pushEvent({ name: 'graph_analysis', props: { text: txt } }); };
+  controls.querySelector('#analyze-bottlenecks').addEventListener('click', () => {
+    const res = analysis.findBottleneckNodes(window.finalGraph, { top: 5 });
+    showResults('Bottlenecks: ' + res.map(r => `${r.id} (cent=${r.centrality.toFixed(2)}, highLoadAdj=${r.highLoadAdj})`).join('; '));
+  });
+  controls.querySelector('#analyze-latency').addEventListener('click', () => {
+    const res = analysis.detectHighLatencyPaths(window.finalGraph, { top: 6 });
+    showResults('High-latency paths: ' + res.map(r => `${r.from}->${r.to} (d=${r.distance})`).join('; '));
+  });
+  controls.querySelector('#analyze-loops').addEventListener('click', () => {
+    const res = analysis.detectConflictLoops(window.finalGraph, { threshold: 0.6 });
+    showResults('Conflict loops: ' + (res.length ? res.map(c => `(${c.nodes.join('→')}) align=${c.meanAlign.toFixed(2)}`).join('; ') : 'none'));
+  });
+  controls.querySelector('#analyze-all').addEventListener('click', () => {
+    const res = analysis.detectAll(window.finalGraph);
+    const txt = `B:${res.bottlenecks.map(b=>b.id).join(', ')} | L:${res.latPaths.map(l=>l.from+'→'+l.to).join(', ')} | C:${res.conflictLoops.length}`;
+    showResults(txt);
+  });
   host.addEventListener('click', () => {
     if (!insightEl) return;
     insightEl.textContent = 'Insight: The visible bottleneck is the Data Pipeline — high load and low TL–DE alignment create hidden dependency latency. Prioritize pipeline stability or reduce coupling.';
