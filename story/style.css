@@ -212,6 +212,13 @@ strong { color: var(--ink-0); font-weight: 600; }
   line-height: 1.1;
   margin: 0;
 }
+/* Author credit */
+.author {
+  margin-top: .5rem;
+  font-size: .85rem;
+  color: var(--ink-1);
+  font-family: ui-monospace, monospace;
+}
 .title .you {
   display: inline-block;
   background: linear-gradient(135deg, var(--hi) 0%, var(--good) 100%);
