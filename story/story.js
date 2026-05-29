@@ -1164,10 +1164,10 @@ function buildFinalAct() {
   const svg = document.getElementById('final-graph');
   if (!svg) return;
 
-  // defs: arrow marker
+  // defs: arrow marker (thinner, smaller)
   const defs = el('defs', {}, svg);
-  el('marker', { id: 'arrow', markerWidth: 8, markerHeight: 8, refX: 7, refY: 4, orient: 'auto' }, defs)
-    .appendChild(el('path', { d: 'M0,0 L8,4 L0,8 z', fill: '#9aa7ff' }));
+  const arrowMarker = el('marker', { id: 'arrow', markerWidth: 6, markerHeight: 6, refX: 5, refY: 3.5, orient: 'auto' }, defs);
+  el('path', { d: 'M0,2 L6,3.5 L0,5 z', fill: '#9aa7ff', opacity: 0.95 }, arrowMarker);
 
   // Node positions
   const positions = {
@@ -1183,11 +1183,16 @@ function buildFinalAct() {
 
   const nodes = {};
   Object.entries(positions).forEach(([k, v]) => {
-    const g = el('g', { class: 'final-node-group', 'data-id': k }, svg);
+    const g = el('g', { class: 'final-node-group', 'data-id': k, tabindex: 0, role: 'group' }, svg);
     const r = (v.type === 'person') ? 18 : (v.type === 'system' ? 16 : 14);
     const cls = 'final-node' + (v.type === 'person' ? ' person' : v.type === 'system' ? ' system' : '');
     el('circle', { class: cls, cx: v.x, cy: v.y, r }, g);
     el('text', { class: 'final-label', x: v.x, y: v.y + r + 14, 'text-anchor': 'middle' }, g).textContent = k.replace(/([A-Z])/g, ' $1').trim();
+    // Accessibility: add title + desc for each node
+    el('title', { id: `final-node-${k}-t` }, g).textContent = `${k} — ${v.type}`;
+    el('desc',  { id: `final-node-${k}-d` }, g).textContent = `Type: ${v.type}. Position: ${v.x}, ${v.y}.`;
+    g.setAttribute('aria-labelledby', `final-node-${k}-t`);
+    g.setAttribute('aria-describedby', `final-node-${k}-d`);
     nodes[k] = v;
   });
 
