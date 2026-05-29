@@ -1209,20 +1209,38 @@ function buildFinalAct() {
     { a: 'Decision', b: 'Goal', type: 'achieves' },
   ];
 
+  // helper: build a straight or quadratic curved path that starts/ends at circle perimeters
+  function edgePath(a, b, rA, rB, curve = 0) {
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const dist = Math.hypot(dx, dy) || 1;
+    const ux = dx / dist, uy = dy / dist;
+    const sx = a.x + ux * rA, sy = a.y + uy * rA;
+    const ex = b.x - ux * rB, ey = b.y - uy * rB;
+    if (curve === 0) return `M ${sx} ${sy} L ${ex} ${ey}`;
+    const mx = (sx + ex) / 2, my = (sy + ey) / 2;
+    const nx = -uy, ny = ux;
+    const cx = mx + nx * curve, cy = my + ny * curve;
+    return `M ${sx} ${sy} Q ${cx} ${cy} ${ex} ${ey}`;
+  }
+
   edges.forEach((e, i) => {
     const a = nodes[e.a], b = nodes[e.b];
-    const line = el('line', {
-      class: 'final-edge', x1: a.x, y1: a.y, x2: b.x, y2: b.y,
-      'stroke-linecap': 'round', 'data-idx': i,
-    }, svg);
-    if (e.load === 'high') line.classList.add('high-load');
-    if (e.align !== undefined && e.align < 0.5) line.classList.add('low-align');
-    // add small inline label at midpoint along the edge, offset based on vertical direction
-    const t = 0.5;
-    const lx = a.x * (1 - t) + b.x * t;
-    const ly = a.y * (1 - t) + b.y * t;
-    const yOffset = (b.y < a.y) ? -10 : 10;
-    el('text', { class: 'final-signal', x: lx, y: ly + yOffset, 'text-anchor': 'middle' }, svg).textContent = e.align !== undefined ? `align ${e.align}` : (e.load ? `load:${e.load}` : e.type);
+    if (!a || !b) return;
+    // determine a small curve for near-horizontal overlaps
+    const horiz = Math.abs(b.y - a.y) < 28 && Math.abs(b.x - a.x) > 20;
+    const curve = horiz ? (b.x > a.x ? -20 : 20) : 0;
+    const d = edgePath(a, b, a.r || 14, b.r || 14, curve);
+    const path = el('path', { d, class: 'final-edge', 'data-idx': i, fill: 'none', 'stroke-linecap': 'round' }, svg);
+    if (e.load === 'high') path.classList.add('high-load');
+    if (e.align !== undefined && e.align < 0.5) path.classList.add('low-align');
+
+    // label placement: midpoint with perpendicular offset
+    const lx = (a.x + b.x) / 2;
+    const ly = (a.y + b.y) / 2;
+    const dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy) || 1;
+    const nx = -dy / len, ny = dx / len;
+    const offset = 14;
+    el('text', { class: 'final-signal', x: lx + nx * offset, y: ly + ny * offset, 'text-anchor': 'middle' }, svg).textContent = e.align !== undefined ? `align ${e.align}` : (e.load ? `load:${e.load}` : e.type);
   });
 
   // Small interactive hint: clicking stage shows a suggested insight
