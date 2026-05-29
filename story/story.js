@@ -1171,16 +1171,16 @@ function buildFinalAct() {
   // Slim, slightly open triangle to reduce visual weight
   el('path', { d: 'M0,1.5 L5,3.5 L0,5.5 z', fill: '#9aa7ff', opacity: 0.9 }, arrowMarker);
 
-  // Node positions
+  // Node positions (arranged to reflect the diagnostic sketch)
   const positions = {
-    PM: { x: 100, y: 80, type: 'person' },
-    TL: { x: 100, y: 200, type: 'person' },
-    DE: { x: 100, y: 320, type: 'person' },
-    Backlog: { x: 320, y: 80, type: 'system' },
-    DataPipeline: { x: 320, y: 200, type: 'system' },
-    Capacity: { x: 320, y: 320, type: 'constraint' },
-    Decision: { x: 480, y: 180, type: 'decision' },
-    Goal: { x: 480, y: 300, type: 'goal' },
+    Goal: { x: 460, y: 40, type: 'goal' },
+    Decision: { x: 420, y: 120, type: 'decision' },
+    Backlog: { x: 320, y: 60, type: 'system' },
+    TL: { x: 160, y: 160, type: 'person' },
+    DE: { x: 300, y: 160, type: 'person' },
+    PM: { x: 80,  y: 300, type: 'person' },
+    DataPipeline: { x: 300, y: 300, type: 'system' },
+    Capacity: { x: 200, y: 340, type: 'constraint' },
   };
 
   const nodes = {};
@@ -1217,9 +1217,12 @@ function buildFinalAct() {
     }, svg);
     if (e.load === 'high') line.classList.add('high-load');
     if (e.align !== undefined && e.align < 0.5) line.classList.add('low-align');
-    // add small inline label at 60% along the edge
-    const lx = a.x * 0.6 + b.x * 0.4, ly = a.y * 0.6 + b.y * 0.4;
-    el('text', { class: 'final-signal', x: lx, y: ly - 6, 'text-anchor': 'middle' }, svg).textContent = e.align !== undefined ? `align ${e.align}` : (e.load ? `load:${e.load}` : e.type);
+    // add small inline label at midpoint along the edge, offset based on vertical direction
+    const t = 0.5;
+    const lx = a.x * (1 - t) + b.x * t;
+    const ly = a.y * (1 - t) + b.y * t;
+    const yOffset = (b.y < a.y) ? -10 : 10;
+    el('text', { class: 'final-signal', x: lx, y: ly + yOffset, 'text-anchor': 'middle' }, svg).textContent = e.align !== undefined ? `align ${e.align}` : (e.load ? `load:${e.load}` : e.type);
   });
 
   // Small interactive hint: clicking stage shows a suggested insight
