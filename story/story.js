@@ -1242,11 +1242,6 @@ function pushEvent(ev) {
     // keep structure small and non-identifying
     const payload = { name: ev.name, props: ev.props || {}, ts: Date.now() };
     window.eventLayer.push(payload);
-    // Plausible integration if enabled
-    const pd = document.querySelector('meta[name="plausible-domain"]')?.content || '';
-    if (pd && window.plausible) {
-      window.plausible(ev.name, { props: ev.props || {} });
-    }
   } catch (e) { console.warn(e); }
 }
 
@@ -1263,16 +1258,7 @@ function captureOutboundLinks() {
   });
 }
 
-function injectPlausibleIfNeeded() {
-  const pd = document.querySelector('meta[name="plausible-domain"]')?.content || '';
-  if (!pd) return;
-  if (window.plausible) return; // already loaded
-  const s = document.createElement('script');
-  s.setAttribute('async', ''); s.setAttribute('defer', '');
-  s.setAttribute('data-domain', pd.replace(/^https?:\/\//, ''));
-  s.src = 'https://plausible.io/js/plausible.js';
-  document.head.appendChild(s);
-}
+// Plausible removed: site uses lightweight `eventLayer` only.
 
 // Initialize all enhancements
 try {
@@ -1280,6 +1266,5 @@ try {
   computeReadTime();
   initProgressAndScrollDepth();
   captureOutboundLinks();
-  injectPlausibleIfNeeded();
   pushEvent({ name: 'page_view', props: { path: location.pathname } });
 } catch (e) { console.warn(e); }
